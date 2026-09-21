@@ -28,11 +28,11 @@
     "vitest": "^5.0.0"
   },
   "dependencies": {
+    "@iconify-icon/solid": "^3.0.4",
     "@kobalte/core": "^0.13.14",
     "@solidjs/meta": "^1.0.0-next.2",
     "@solidjs/router": "^2.0.0-next.26",
     "@solidjs/web": "^2.0.0-rc.9",
-    "lucide-solid": "^1.47.0",
     "solid-js": "^2.0.0-rc.9"
   }
 }

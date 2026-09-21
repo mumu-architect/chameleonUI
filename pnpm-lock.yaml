@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@iconify-icon/solid':
+        specifier: ^3.0.4
+        version: 3.0.4(solid-js@2.0.0-rc.9)
       '@kobalte/core':
         specifier: ^0.13.14
         version: 0.13.14(solid-js@2.0.0-rc.9)
@@ -20,9 +23,6 @@ importers:
       '@solidjs/web':
         specifier: ^2.0.0-rc.9
         version: 2.0.0-rc.9(solid-js@2.0.0-rc.9)
-      lucide-solid:
-        specifier: ^1.47.0
-        version: 1.47.0(solid-js@2.0.0-rc.9)
       solid-js:
         specifier: ^2.0.0-rc.9
         version: 2.0.0-rc.9
@@ -279,6 +279,14 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
+
+  '@iconify-icon/solid@3.0.4':
+    resolution: {integrity: sha512-DRVSiMHK7RPjDB4WyXV89DlaGikImaZPzSePqu91ESJXaNSA+gD9bPv4SAVH5hFFNtccNJ+1rcDfmkyGm6w6iQ==}
+    peerDependencies:
+      solid-js: '>=1.0.0'
+
+  '@iconify/types@2.0.0':
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
 
   '@internationalized/number@3.6.8':
     resolution: {integrity: sha512-8UmMFia46DUt+k97zKd9fKWXcWHR+k8ae3eYzILETuT2KbIvLyOfac7zesw+sJdRAAZ7Q9pM1Mk22aXp2LD0Ig==}
@@ -1406,6 +1414,9 @@ packages:
     resolution: {integrity: sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw==}
     engines: {node: '>= 14'}
 
+  iconify-icon@3.0.3:
+    resolution: {integrity: sha512-n4ZIChz3N75KqFSWLt9hHGzbrqGQeeoFxCE+nND4WFFa88x8AW8GvmnVZaVNYErhhiZkxJhBfVKMIGrF1wt3hg==}
+
   iconv-lite@0.6.3:
     resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
     engines: {node: '>=0.10.0'}
@@ -1653,11 +1664,6 @@ packages:
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
-
-  lucide-solid@1.47.0:
-    resolution: {integrity: sha512-upKY9VSMWsk91pjSCJ/2VtstGJha6qXflfJSN/ahtmWNfy+vtl0ZTMj3KNcnGZCgHVQO5SCG2OecFV7ZlvWVyQ==}
-    peerDependencies:
-      solid-js: ^1.4.7
 
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
@@ -2369,6 +2375,13 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
+
+  '@iconify-icon/solid@3.0.4(solid-js@2.0.0-rc.9)':
+    dependencies:
+      iconify-icon: 3.0.3
+      solid-js: 2.0.0-rc.9
+
+  '@iconify/types@2.0.0': {}
 
   '@internationalized/number@3.6.8':
     dependencies:
@@ -3346,6 +3359,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  iconify-icon@3.0.3:
+    dependencies:
+      '@iconify/types': 2.0.0
+
   iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
@@ -3536,10 +3553,6 @@ snapshots:
   lru-cache@5.1.1:
     dependencies:
       yallist: 3.1.1
-
-  lucide-solid@1.47.0(solid-js@2.0.0-rc.9):
-    dependencies:
-      solid-js: 2.0.0-rc.9
 
   lz-string@1.5.0: {}
 
