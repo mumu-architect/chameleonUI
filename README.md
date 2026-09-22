@@ -19,7 +19,7 @@ There is no `index.html` and no mount file. `@solidjs/vite-plugin`'s turnkey mod
 
 The `fileRoutes()` plugin (from `filesystem-routing/vite`) scans `src/routes` and exposes the result as the `virtual:file-routes` module, which `@solidjs/router/fs` turns into router routes inside `src/App.tsx`. You edit files under `src/routes`; the route table follows:
 
-- `index.tsx` is `/`, `users/[id].tsx` is `/users/:id`, `[...404].tsx` catches everything else.
+- `[index].tsx` is `/`, `users/[id].tsx` is `/users/:id`, `[...404].tsx` catches everything else.
 - Pairing `users.tsx` with the `users/` directory makes it a layout wrapping every page inside.
 - A module is a page when it has a **default export** (a file without one is not a route), and may export a `route` config object — `src/routes/users/[id].tsx` uses `preload` to start its data fetch as navigation begins.
 
