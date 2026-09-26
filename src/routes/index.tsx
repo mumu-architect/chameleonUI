@@ -4,10 +4,11 @@
 // import "../App.css";
 
 import { Title } from '@solidjs/meta';
-import {createSignal, Loading, For} from 'solid-js';
+import {createSignal, Loading, For, lazy } from 'solid-js';
 import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
+import {DefaultSearchTypes, PathEnd} from "@solidjs/router";
 
 
 export default  function indexLayout(props: ParentProps) {
@@ -15,9 +16,13 @@ export default  function indexLayout(props: ParentProps) {
     const [sidebarCollapsed, setSidebarCollapsed] = createSignal(false);
     // 模拟打开的标签页
     const [tabs, setTabs] = createSignal([
-        {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1)},
-        {id: "table", icon: "boxicons:table", label: "Table", path: paths.table},
-        {id: "about", icon: "cib:about-me", label: "About", path: paths.index(1)},
+        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard", path: paths.dashboard,content:lazy(() => import(paths.table.toString()))},
+        {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1),content:lazy(() => import(paths.users(1).toString()))},
+        {id: "table", icon: "boxicons:table", label: "Table", path: paths.table,content:lazy(() => import(paths.table.toString()))},
+        {id: "about", icon: "cib:about-me", label: "About", path: paths.about,content: lazy(() => import(paths.about.toString()))},
+    ]);
+    const [navTabs,setNavTabs] = createSignal([
+        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard",display:true,close:false, path: paths.dashboard,content:lazy(() => import(paths.table.toString()))},
     ]);
     //页面点击事件，不走路径，直接创建dom文档，插入对应位置就行
     const  openPage=(id :string,path :string)=>{
@@ -33,8 +38,35 @@ export default  function indexLayout(props: ParentProps) {
         //     </Tabs>
         // </>
     };
-    const addTabPage = (id :string,path :string) => {
-
+    const addTabPage = (tabId :string):boolean => {
+        //判断是否已经打开
+       // (navTabs )
+        for(let item of navTabs()) {
+            if(item.id===tabId){
+                //当前页面已打开，只需选中当前页面
+            setNavTabs(prev => prev.map(item => {
+                if (item.id === tabId) {
+                    return { ...item, display: true };
+                }else {
+                    return { ...item, display: false };
+                }
+            }));
+                return true
+            }
+        }
+        setNavTabs(prev => prev.map(item => {
+            if (item.id === tabId) {
+                return { ...item, display: true };
+            }else {
+                return { ...item, display: false };
+            }
+        }));
+        for (let item of tabs()){
+            if(item.id===tabId){
+                setNavTabs(prev => [...prev,{id:item.id, icon: item.icon, label: item.label, display:true,close:true,path: item.path,content:item.content}]);
+            }
+        }
+        return true
     };
 
     const removeTab = () => {
@@ -45,7 +77,7 @@ export default  function indexLayout(props: ParentProps) {
 
     // 关闭tab
     const closeTab = (tabId: string) => {
-        setTabs(tabs().filter((t) => t.id !== tabId));
+        setNavTabs(navTabs().filter((t) => t.id !== tabId));
     };
     return (
         <>
@@ -64,14 +96,14 @@ export default  function indexLayout(props: ParentProps) {
                         <span class={sidebarCollapsed() ? "hidden" : ""}>Chameleon‑UI</span>
                     </div>
                     <nav class="flex-1 px-2 py-3 space-y-1 overflow-y-auto">
-                        <a href={paths.dashboard}
-                           class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">
-                            <Icon icon="ant-design:dashboard-outlined" width="24" height="24"/>
-                            <span class={sidebarCollapsed() ? "hidden" : ""}>Dashboard</span>
-                        </a>
+                        {/*<a  onClick={()=>addTabPage("dashboard")}*/}
+                        {/*   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">*/}
+                        {/*    <Icon icon="ant-design:dashboard-outlined" width="24" height="24"/>*/}
+                        {/*    <span class={sidebarCollapsed() ? "hidden" : ""}>Dashboard</span>*/}
+                        {/*</a>*/}
                         <For each={tabs()}>
                             {(item) => (
-                                <a href={item.path}
+                                <a onClick={()=>addTabPage(item.id)}
                                    class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">
                                     <Icon icon={item.icon} width="24" height="24"/>
                                     <span class={sidebarCollapsed() ? "hidden" : ""}>{item.label}</span>
@@ -118,26 +150,35 @@ export default  function indexLayout(props: ParentProps) {
 
 
                     </header>
-                    <nav class="p-2 shrink-0 bg-slate-100 flex items-center px-2 gap-1 overflow-x-auto border-b">
-
-                        <div class="flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm">
-                            <a href={paths.dashboard} class="text-sm">dashboard</a>
-                        </div>
-                        {tabs().map((tab) => (
+                    <nav class="p-2 shrink-0 bg-slate-100 flex items-center px-2 gap-1 overflow-x-auto border-b ">
+                        {/*<div class="flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm hover:bg-blue-700 focus:bg-amber-200">*/}
+                        {/*    <a onClick={()=>addTabPage('dashboard')} class="text-sm">dashboard</a>*/}
+                        {/*</div>*/}
+                        {navTabs().map((tab) => (
                             <div class="flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm">
-                                <a href={tab.path} class="text-sm px-[15px]">{tab.label}</a>
+                                <a onClick={()=>addTabPage(tab.id)}  class="text-sm px-[15px]">{tab.label}</a>
+                                {tab.close ? (
                                 <button
                                     onClick={() => closeTab(tab.id)}
                                     class="w-4 h-4 rounded hover:bg-gray-200 flex items-center justify-center"
                                 >
                                     <Icon icon="iconamoon:close-circle-1-thin" width="20" height="20"/>
                                 </button>
+                                ):null}
+
                             </div>
                         ))}
                     </nav>
-
-                    <Loading fallback={<main>Loading…</main>}>{props.children}</Loading>
-
+                    {navTabs().map((tab) => (
+                        <Loading fallback={<main>Loading…</main>}>
+                            <iframe
+                                id={tab.id}
+                        src={tab.path.toString()}
+                        style={ {display:tab.display?"block":"none",width:"100%", height:"800px", border:"none"}}
+                        title={tab.id}
+                            />
+                        </Loading>
+                    ))}
                     <footer
                         class="flex-1 shrink-0  border-t bg-white items-center justify-center text-sm text-gray-500 ">
                         <h1 class="text-center font-thin p-1">Chameleon‑UI © 2026</h1>
@@ -145,8 +186,6 @@ export default  function indexLayout(props: ParentProps) {
                             Email:1211884772@qq.com</h3>
                     </footer>
                 </div>
-
-
             </div>
         </>
     );
