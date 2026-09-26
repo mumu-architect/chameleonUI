@@ -1,14 +1,8 @@
-// import { Title } from '@solidjs/meta';
-// import Counter from '../components/Counter';
-// import logo from '../logo.svg';
-// import "../App.css";
-
 import { Title } from '@solidjs/meta';
 import {createSignal, Loading, For, lazy } from 'solid-js';
 import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
-import {DefaultSearchTypes, PathEnd} from "@solidjs/router";
 
 
 export default  function indexLayout(props: ParentProps) {
@@ -18,7 +12,11 @@ export default  function indexLayout(props: ParentProps) {
     const [tabs, setTabs] = createSignal([
         {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard", path: paths.dashboard},
         {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1)},
+        {id: "form", icon: "boxicons:form", label: "Form", path: paths.form},
+        {id: "charts", icon: "famicons:stats-chart", label: "Charts", path: paths.charts},
+        {id: "dateComponent", icon: "clarity:date-line", label: "DateComponent", path: paths.dateComponent},
         {id: "table", icon: "boxicons:table", label: "Table", path: paths.table},
+        {id: "dataTable", icon: "material-symbols:data-table-outline", label: "DataTable", path: paths.dataTable},
         {id: "about", icon: "cib:about-me", label: "About", path: paths.about},
     ]);
     const [navTabs,setNavTabs] = createSignal([
@@ -54,23 +52,21 @@ export default  function indexLayout(props: ParentProps) {
         }
         return true
     };
-
-    const removeTab = () => {
-        if (tabs().length > 1) {
-            setTabs(prev => prev.slice(0, -1));
-        }
-    };
-
     // 关闭tab
-    const closeTab = (tabId: string) => {
+    const removeTab = (tabId: string) => {
         setNavTabs(navTabs().filter((t) => t.id !== tabId))
-        setNavTabs(prev => prev.map(item => {
-            if (item.id == "dashboard") {
-                return { ...item, display: true };
-            }else {
-                return { ...item, display: false };
-            }
-        }));
+
+        //显示上一个tab
+        let preIndex=navTabs().findIndex((t)=>t.id === tabId)-1
+        if (preIndex>=0){
+            setNavTabs(prev => prev.map(item => {
+                if (item.id == navTabs()[preIndex].id) {
+                    return { ...item, display: true };
+                }else {
+                    return { ...item, display: false };
+                }
+            }));
+        }
     };
     return (
         <>
@@ -104,9 +100,8 @@ export default  function indexLayout(props: ParentProps) {
                             )}
                         </For>
                     </nav>
-
                 </aside>
-                <div class="flex-1 overflow-auto p-2 bg-amber-600">
+                <div class="flex-1 overflow-auto p-2">
                     <header
                         class="h-14 shrink-0 bg-slate-800 text-white flex items-center justify-between px-4 border-b border-slate-700">
                         {/* 侧边栏折叠按钮 */}
@@ -152,7 +147,7 @@ export default  function indexLayout(props: ParentProps) {
                                 <a onClick={()=>addTabPage(tab.id)}  class="text-sm px-[15px]">{tab.label}</a>
                                 {tab.close ? (
                                 <button
-                                    onClick={() => closeTab(tab.id)}
+                                    onClick={() => removeTab(tab.id)}
                                     class="w-4 h-4 rounded hover:bg-gray-200 flex items-center justify-center"
                                 >
                                     <Icon icon="iconamoon:close-circle-1-thin" width="20" height="20"/>

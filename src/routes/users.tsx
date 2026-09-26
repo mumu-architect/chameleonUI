@@ -4,7 +4,7 @@ import type { ParentProps } from 'solid-js';
 // page inside it under this component.
 export default function UsersLayout(props: ParentProps) {
   return (
-    <main  class="flex-1 overflow-auto p-6 bg-amber-600">
+    <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
       <h1>Users</h1>
       {props.children}
     </main>
