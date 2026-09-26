@@ -16,28 +16,14 @@ export default  function indexLayout(props: ParentProps) {
     const [sidebarCollapsed, setSidebarCollapsed] = createSignal(false);
     // 模拟打开的标签页
     const [tabs, setTabs] = createSignal([
-        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard", path: paths.dashboard,content:lazy(() => import(paths.table.toString()))},
-        {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1),content:lazy(() => import(paths.users(1).toString()))},
-        {id: "table", icon: "boxicons:table", label: "Table", path: paths.table,content:lazy(() => import(paths.table.toString()))},
-        {id: "about", icon: "cib:about-me", label: "About", path: paths.about,content: lazy(() => import(paths.about.toString()))},
+        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard", path: paths.dashboard},
+        {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1)},
+        {id: "table", icon: "boxicons:table", label: "Table", path: paths.table},
+        {id: "about", icon: "cib:about-me", label: "About", path: paths.about},
     ]);
     const [navTabs,setNavTabs] = createSignal([
-        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard",display:true,close:false, path: paths.dashboard,content:lazy(() => import(paths.table.toString()))},
+        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard",display:true,close:false, path: paths.dashboard},
     ]);
-    //页面点击事件，不走路径，直接创建dom文档，插入对应位置就行
-    const  openPage=(id :string,path :string)=>{
-        // <>
-        //     <button onClick={addTab}>Add tab</button>
-        //     <button onClick={removeTab}>Remove tab</button>
-        //     <Tabs>
-        //         <Tabs.List>
-        //             <For each={tabs()}>{tab => <Tabs.Trigger value={tab.id}>{tab.title}</Tabs.Trigger>}</For>
-        //             <Tabs.Indicator />
-        //         </Tabs.List>
-        //         <For each={tabs()}>{tab => <Tabs.Content value={tab.id}>{tab.content}</Tabs.Content>}</For>
-        //     </Tabs>
-        // </>
-    };
     const addTabPage = (tabId :string):boolean => {
         //判断是否已经打开
        // (navTabs )
@@ -63,7 +49,7 @@ export default  function indexLayout(props: ParentProps) {
         }));
         for (let item of tabs()){
             if(item.id===tabId){
-                setNavTabs(prev => [...prev,{id:item.id, icon: item.icon, label: item.label, display:true,close:true,path: item.path,content:item.content}]);
+                setNavTabs(prev => [...prev,{id:item.id, icon: item.icon, label: item.label, display:true,close:true,path: item.path}]);
             }
         }
         return true
@@ -77,7 +63,14 @@ export default  function indexLayout(props: ParentProps) {
 
     // 关闭tab
     const closeTab = (tabId: string) => {
-        setNavTabs(navTabs().filter((t) => t.id !== tabId));
+        setNavTabs(navTabs().filter((t) => t.id !== tabId))
+        setNavTabs(prev => prev.map(item => {
+            if (item.id == "dashboard") {
+                return { ...item, display: true };
+            }else {
+                return { ...item, display: false };
+            }
+        }));
     };
     return (
         <>
