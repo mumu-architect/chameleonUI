@@ -143,7 +143,7 @@ export default  function indexLayout(props: ParentProps) {
                         {/*    <a onClick={()=>addTabPage('dashboard')} class="text-sm">dashboard</a>*/}
                         {/*</div>*/}
                         {navTabs().map((tab) => (
-                            <div class="flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm">
+                            <div class={tab.display?"flex items-center gap-1 px-3 py-1 bg-slate-300 rounded border shadow-sm hover:bg-slate-300 data-[active]:bg-slate-300":"flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm hover:bg-slate-300 data-[active]:bg-slate-300"}>
                                 <a onClick={()=>addTabPage(tab.id)}  class="text-sm px-[15px]">{tab.label}</a>
                                 {tab.close ? (
                                 <button
