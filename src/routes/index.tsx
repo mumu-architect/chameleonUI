@@ -1,5 +1,5 @@
 import { Title } from '@solidjs/meta';
-import {createSignal, Loading, For, lazy } from 'solid-js';
+import {createSignal, Loading, For } from 'solid-js';
 import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
