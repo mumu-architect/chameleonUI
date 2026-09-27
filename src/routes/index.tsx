@@ -3,6 +3,9 @@ import {createSignal, Loading, For } from 'solid-js';
 import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
+import tooltipLayout from "./tooltip";
+import {Q_Tooltip} from "../components/Tooltip";
+import paginationLayout from "./pagination";
 
 
 export default  function indexLayout(props: ParentProps) {
@@ -14,9 +17,16 @@ export default  function indexLayout(props: ParentProps) {
         {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1)},
         {id: "form", icon: "boxicons:form", label: "Form", path: paths.form},
         {id: "charts", icon: "famicons:stats-chart", label: "Charts", path: paths.charts},
-        {id: "dateComponent", icon: "clarity:date-line", label: "DateComponent", path: paths.dateComponent},
+        {id: "datePicker", icon: "clarity:date-line", label: "DatePicker", path: paths.datePicker},
+        {id: "menu", icon: "clarity:date-line", label: "Menu", path: paths.menu},
         {id: "table", icon: "boxicons:table", label: "Table", path: paths.table},
+        {id: "pagination", icon: "boxicons:table", label: "Pagination", path: paths.pagination},
         {id: "dataTable", icon: "material-symbols:data-table-outline", label: "DataTable", path: paths.dataTable},
+        {id: "toggleGroup", icon: "material-symbols:data-table-outline", label: "ToggleGroup", path: paths.toggleGroup},
+        {id: "button", icon: "material-symbols:data-table-outline", label: "Button", path: paths.button},
+        {id: "alert", icon: "material-symbols:data-table-outline", label: "Alert", path: paths.alert},
+        {id: "dialog", icon: "material-symbols:data-table-outline", label: "Dialog", path: paths.dialog},
+        {id: "tooltip", icon: "material-symbols:data-table-outline", label: "Tooltip", path: paths.tooltip},
         {id: "about", icon: "cib:about-me", label: "About", path: paths.about},
     ]);
     const [navTabs,setNavTabs] = createSignal([
@@ -93,8 +103,8 @@ export default  function indexLayout(props: ParentProps) {
                         <For each={tabs()}>
                             {(item) => (
                                 <a onClick={()=>addTabPage(item.id)}
-                                   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">
-                                    <Icon icon={item.icon} width="24" height="24"/>
+                                   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700"><Icon icon={item.icon} width="24" height="24"/>
+
                                     <span class={sidebarCollapsed() ? "hidden" : ""}>{item.label}</span>
                                 </a>
                             )}

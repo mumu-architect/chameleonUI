@@ -39,6 +39,18 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/alert";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/alert")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/button";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/button")>;
+      $$route?: undefined;
+    },
+    {
       path: "/charts";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/charts")>;
@@ -57,15 +69,21 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
-      path: "/dateComponent";
+      path: "/datePicker";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/dateComponent")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/datePicker")>;
       $$route?: undefined;
     },
     {
-      path: "/form";
+      path: "/dialog";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/dialog")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
       $$route?: undefined;
     },
     {
@@ -75,9 +93,33 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/menu";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/menu")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/pagination";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/pagination")>;
+      $$route?: undefined;
+    },
+    {
       path: "/table";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/table")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/toggleGroup";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/tooltip";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/tooltip")>;
       $$route?: undefined;
     },
     {
@@ -105,9 +147,9 @@ declare module "virtual:file-routes" {
       $$route: FileRouteEagerRef<typeof import("./src/routes/users/[id]")>;
     },
     {
-      path: "/";
+      path: "/form";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
       $$route?: undefined;
     }
   ];
@@ -124,10 +166,10 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/form";
-      id: "/form";
+      path: "/menu";
+      id: "/menu";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/menu")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -140,10 +182,26 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
+      path: "/form";
+      id: "/form";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/about";
       id: "/about";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/about")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/alert";
+      id: "/alert";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/alert")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -181,10 +239,34 @@ declare module "virtual:file-routes" {
       ];
     },
     {
+      path: "/button";
+      id: "/button";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/button")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/charts";
       id: "/charts";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/charts")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/dialog";
+      id: "/dialog";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/dialog")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/tooltip";
+      id: "/tooltip";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/tooltip")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -205,18 +287,34 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/index/:index";
-      id: "/index/:index";
+      path: "/datePicker";
+      id: "/datePicker";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/index/[index]")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/datePicker")>;
       $$route?: undefined;
       children?: undefined;
     },
     {
-      path: "/dateComponent";
-      id: "/dateComponent";
+      path: "/pagination";
+      id: "/pagination";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/dateComponent")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/pagination")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/toggleGroup";
+      id: "/toggleGroup";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/index/:index";
+      id: "/index/:index";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/index/[index]")>;
       $$route?: undefined;
       children?: undefined;
     }
