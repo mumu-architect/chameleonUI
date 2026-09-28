@@ -7,7 +7,7 @@ import {Q_Tooltip} from "../components/Tooltip";
 export default function tooltipLayout(props: ParentProps) {
     return (
         <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
-            <h1>About</h1>
+            <h1>Tooltip</h1>
             <div>
                 <Tooltip.Root openDelay={500} closeDelay={300} >
                 <Tooltip.Trigger>

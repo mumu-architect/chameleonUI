@@ -1,0 +1,9 @@
+[
+  { "id": "1", "name": "Rust", "year": "2010", "paradigm": "Systems" },
+  { "id": "2", "name": "TypeScript", "year": "2012", "paradigm": "Multi-paradigm" },
+  { "id": "3", "name": "Go", "year": "2009", "paradigm": "Concurrent" },
+  { "id": "4", "name": "C", "year": "1978", "paradigm": "Procedural" },
+  { "id": "5", "name": "Rust", "year": "2010", "paradigm": "Systems" },
+  { "id": "6", "name": "Go", "year": "2009", "paradigm": "Systems" },
+  { "id": "7", "name": "Haskell", "year": "1990", "paradigm": "Functional" },
+]

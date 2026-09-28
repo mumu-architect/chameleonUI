@@ -44,7 +44,7 @@ export default function formLayout(props: ParentProps) {
     //RadioGroup selected
     const [selected, setSelected] = createSignal("scales");
     //select selected
-    const [selectedVal, setSelectedVal] = createSignal<string | null>(null);
+    const [selectedVal, setSelectedVal] = createSignal<string | undefined>(undefined);
     const [isOpen, setIsOpen] = createSignal(false);
 
     const displayText = () => {
@@ -239,10 +239,10 @@ export default function formLayout(props: ParentProps) {
                 <div ref={rootRef} class="relative w-52">
                     <Select.Root
                         value={selectedVal}
+                        defaultValue={undefined}
                         onValueChange={(v) =>{ console.log("select selected:", v);setSelectedVal(v)}}
-                        open={isOpen}
+                        defaultOpen={isOpen()}
                         onOpenChange={setIsOpen}
-                        portal={null}
                     >
                         {/* 触发器：加边框、白色背景、圆角、hover效果 */}
                         <Select.Trigger>
@@ -409,7 +409,7 @@ export default function formLayout(props: ParentProps) {
                     <For each={itemList()}>
                         {(entry) => (
                             <div
-                                key={entry.uid}
+                                // key={entry.uid}
                                 class="flex items-center justify-between p-3 border border-black rounded"
                             >
                                 <div class="flex flex-col">

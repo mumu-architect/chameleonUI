@@ -5,7 +5,7 @@ import * as DatePicker from "@solidiom/date-picker"
 export default function datePickerLayout(props: ParentProps) {
     return (
         <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
-            <h1>DateComponent</h1>
+            <h1>DatePicker</h1>
             <div>
                 <DatePicker.Root onValueChange={(date) => console.log(date)}>
                     <DatePicker.Input placeholder="Select a date" />

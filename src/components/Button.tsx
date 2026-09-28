@@ -7,7 +7,7 @@ export type UiButtonProps = {
     onClick?: () => void;
     loading?: boolean;
     disabled?: boolean;
-    variant?: "primary" | "secondary" | "danger" | "ghost";
+    variant?: "primary" | "secondary" | "danger" | "yellow" | "ghost";
 };
 
 export function Q_Button(props: UiButtonProps) {
@@ -22,12 +22,13 @@ export function Q_Button(props: UiButtonProps) {
                 return "bg-red-500 text-white border-red-600 hover:bg-red-600 active:bg-red-700";
             case "ghost":
                 return "border-gray-300 text-gray-700 hover:bg-gray-100";
+            case "yellow":
+                return "bg-amber-200 text-black border-gray-500  hover:bg-gray-100";
             case "primary":
             default:
                 return "bg-blue-600 text-white border-blue-700 hover:bg-blue-700 active:bg-blue-800";
         }
     };
-
     return (
         <Button.Root
             onClick={props.onClick}

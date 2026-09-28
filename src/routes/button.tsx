@@ -6,7 +6,7 @@ import {Q_Button} from "../components/Button";
 export default function buttonLayout(props: ParentProps) {
     return (
         <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
-            <h1>About</h1>
+            <h1>Button</h1>
             <div>
                 {/* primary 蓝色填充 + 边框 */}
                 <Button.Root
@@ -31,7 +31,13 @@ export default function buttonLayout(props: ParentProps) {
                 >
                     Click me
                 </Button.Root>
-
+                {/*  黄色带边框 */}
+                <Button.Root
+                    loading
+                    class="px-4 py-2 rounded transition-colors disabled:opacity-60 bg-amber-200 text-black border-gray-500  hover:bg-gray-100 active:bg-amber-600"
+                >
+                    Click me
+                </Button.Root>
                 {/* ghost 幽灵，全部加灰色边框 */}
                 <Button.Root
                     onClick={() => alert("clicked")}
@@ -55,6 +61,7 @@ export default function buttonLayout(props: ParentProps) {
                 <Q_Button variant="primary" onClick={() => alert("clicked")}>Click me</Q_Button>
                 <Q_Button variant="secondary" onClick={() => alert("clicked")}>Click me</Q_Button>
                 <Q_Button variant="danger" onClick={() => alert("clicked")}>Click me</Q_Button>
+                <Q_Button variant="yellow" onClick={() => alert("clicked")}>Click me</Q_Button>
                 <Q_Button variant="ghost" onClick={() => alert("clicked")}>Click me</Q_Button>
                 <Q_Button variant="primary" loading>Saving...</Q_Button>
             </div>
