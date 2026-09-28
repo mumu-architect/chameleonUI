@@ -16,7 +16,6 @@ export default function dataTableLayout(props: ParentProps) {
         name: string;
         year: string;
         paradigm: string;
-        action:string;
     };
 
     type MultiSortItem = {
@@ -28,7 +27,7 @@ export default function dataTableLayout(props: ParentProps) {
         { id: "name", header: "Name", accessorKey: "name", sortable: true },
         { id: "year", header: "Year", accessorKey: "year", sortable: true },
         { id: "paradigm", header: "Paradigm", accessorKey: "paradigm",sortable: false  },
-        { id: "action", header: "Action", accessorKey: "action",sortable: false  },
+
     ])
 
     const getDataTables = query(async (id: string) => {
@@ -188,16 +187,14 @@ export default function dataTableLayout(props: ParentProps) {
         <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
             <h1>DataTable</h1>
             <div>
-                {/*{columns.map((row) => (*/}
-                {/*    <DataTable.HeaderCell columnId="{row.id}" defaultSortState={true}>{row.header}</DataTable.HeaderCell>*/}
-                {/*))}*/}
                 <DataTable.Root data={sortedData()} columns={columnsTable()} class="w-full" >
                 <DataTable.Header  >
                     <tr class="border-b  border-gray-200 bg-gray-50">
                         {columnsTable().map((row) => (
-                            <DataTable.HeaderCell class="border border-gray-200 text-left font-semibold text-gray-600" columnId="{row.id}" ><button
+                            <DataTable.HeaderCell class="border border-gray-200  text-center font-semibold text-gray-600" columnId="{row.id}" >
+                                <button
                                 type="button"
-                                class="w-full text-left font-semibold px-4 py-3  text-gray-600 hover:bg-gray-100 select-none"
+                                class="w-full  font-semibold px-4 py-3  text-gray-600 hover:bg-gray-100 select-none"
                                 onClick={row.sortable ? (e) => handleHeaderClick(row.id, e) : undefined}
                             >
                                 {row.header}
@@ -213,6 +210,7 @@ export default function dataTableLayout(props: ParentProps) {
                             </button>
                             </DataTable.HeaderCell>
                         ))}
+                        <DataTable.HeaderCell columnId="action" class="border border-gray-200 text-center font-semibold text-gray-600">Action</DataTable.HeaderCell>
                         {/*<DataTable.HeaderCell columnId="id">Id</DataTable.HeaderCell>*/}
                         {/*<DataTable.HeaderCell columnId="name">Name</DataTable.HeaderCell>*/}
                         {/*<DataTable.HeaderCell columnId="year">Year</DataTable.HeaderCell>*/}
