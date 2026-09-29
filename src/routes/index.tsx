@@ -113,7 +113,7 @@ export default  function indexLayout(props: ParentProps) {
                     </nav>
                 </aside>
                 {/*右侧整体垂直布局*/}
-                <div class="flex-1 flex flex-col h-full overflow-hidden mr-2.5">
+                <div class="flex-1 flex flex-col h-full overflow-hidden">
                     <header
                         class="h-14 shrink-0 bg-slate-800 text-white flex items-center justify-between px-4 border-b border-slate-700">
                         {/* 侧边栏折叠按钮 */}
@@ -130,13 +130,9 @@ export default  function indexLayout(props: ParentProps) {
                         </button>
                         {/* 用户头像 + 登录退出下拉 */}
                         <div class="relative group">
-                            <button class="flex items-center gap-2 p-1 rounded hover:bg-slate-700">
-                                <div class="w-8 h-8 rounded-full bg-slate-600 flex items-center justify-center">
-                                    <svg class="w-4 h-4 stroke-white stroke-2 fill-none"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                                        <circle cx="12" cy="7" r="4"/>
-                                    </svg>
+                            <button class="flex items-center gap-2 p-1 rounded hover:bg-slate-700 mr-12">
+                                <div class="w-8 h-8 rounded-full bg-slate-600 flex items-center justify-center text-green-400">
+                                    <Icon icon="fa-solid:user-astronaut" width="25" height="25"/>
                                 </div>
                                 <span class="hidden md:inline">Admin</span>
                             </button>
