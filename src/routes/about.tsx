@@ -10,7 +10,7 @@ export default function aboutLayout(props: ParentProps) {
     }
 
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>About me</h1>
             <div class="w-full flex border border-gray-300 rounded-xl">
             <div class="min-h-screen flex-1/2 w-1/2 items-top justify-center p-2 font-inter ">
@@ -29,18 +29,14 @@ export default function aboutLayout(props: ParentProps) {
                     <div class="space-y-5">
                         <div class="flex items-center gap-3">
                             <span class="text-slate-800 font-medium w-7">1.</span>
-                            <div class="flex-1 border-b border-slate-300"></div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-slate-800 font-medium w-7">2.</span>
                             <div class="flex-1 border-b border-slate-300">I have a product called  "Chameleon-UI" front-end UI framework.</div>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="text-slate-800 font-medium w-7">3.</span>
+                            <span class="text-slate-800 font-medium w-7">2.</span>
                             <div class="flex-1 border-b border-slate-300">I have the QPHP MVC framework product.</div>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="text-slate-800 font-medium w-7">4.</span>
+                            <span class="text-slate-800 font-medium w-7">3.</span>
                             <div class="flex-1 border-b border-slate-300">I have the QFS distributed file storage system product.</div>
                         </div>
                     </div>
@@ -64,18 +60,14 @@ export default function aboutLayout(props: ParentProps) {
                     <div class="space-y-5">
                         <div class="flex items-center gap-3">
                             <span class="text-slate-800 font-medium w-7">1.</span>
-                            <div class="flex-1 border-b border-slate-300">I have a great passion for software technology.I enjoy reading various books.</div>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <span class="text-slate-800 font-medium w-7">2.</span>
                             <div class="flex-1 border-b border-slate-300">I have a product called  "Chameleon-UI" front-end UI framework.</div>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="text-slate-800 font-medium w-7">3.</span>
+                            <span class="text-slate-800 font-medium w-7">2.</span>
                             <div class="flex-1 border-b border-slate-300">I have the QPHP MVC framework product.</div>
                         </div>
                         <div class="flex items-center gap-3">
-                            <span class="text-slate-800 font-medium w-7">4.</span>
+                            <span class="text-slate-800 font-medium w-7">3.</span>
                             <div class="flex-1 border-b border-slate-300">I have the QFS distributed file storage system product.</div>
                         </div>
                     </div>
