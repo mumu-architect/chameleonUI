@@ -112,7 +112,8 @@ export default  function indexLayout(props: ParentProps) {
                         </For>
                     </nav>
                 </aside>
-                <div class="flex-1 overflow-auto p-2">
+                {/*右侧整体垂直布局*/}
+                <div class="flex-1 flex flex-col h-full overflow-hidden mr-2.5">
                     <header
                         class="h-14 shrink-0 bg-slate-800 text-white flex items-center justify-between px-4 border-b border-slate-700">
                         {/* 侧边栏折叠按钮 */}
@@ -146,13 +147,8 @@ export default  function indexLayout(props: ParentProps) {
                                 <div class="p-2 hover:bg-gray-100 cursor-pointer">退出登录</div>
                             </div>
                         </div>
-
-
                     </header>
                     <nav class="p-2 shrink-0 bg-slate-100 flex items-center px-2 gap-1 overflow-x-auto border-b ">
-                        {/*<div class="flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm hover:bg-blue-700 focus:bg-amber-200">*/}
-                        {/*    <a onClick={()=>addTabPage('dashboard')} class="text-sm">dashboard</a>*/}
-                        {/*</div>*/}
                         {navTabs().map((tab) => (
                             <div class={tab.display?"flex items-center gap-1 px-3 py-1 bg-slate-300 rounded border shadow-sm hover:bg-slate-300 data-[active]:bg-slate-300":"flex items-center gap-1 px-3 py-1 bg-white rounded border shadow-sm hover:bg-slate-300 data-[active]:bg-slate-300"}>
                                 <a onClick={()=>addTabPage(tab.id)}  class="text-sm px-[15px]">{tab.label}</a>
@@ -168,21 +164,25 @@ export default  function indexLayout(props: ParentProps) {
                             </div>
                         ))}
                     </nav>
+                     {/*Main 主内容区：可滚动（可选，如果你需要main滚动） */}
+                    <main class="flex-1 p-4 ">
                     {navTabs().map((tab) => (
                         <Loading fallback={<main>Loading…</main>}>
                             <iframe
                                 id={tab.id}
                         src={tab.path.toString()}
-                        style={ {display:tab.display?"block":"none",width:"100%", height:"800px", border:"none"}}
+                        style={ {display:tab.display?"block":"none",border:"none"}}
                         title={tab.id}
+                                class="w-full h-full border border-slate-200 rounded-lg block "
                             />
                         </Loading>
                     ))}
-                    <footer
-                        class="flex-1 shrink-0  border-t bg-white items-center justify-center text-sm text-gray-500 ">
+                    </main>
+                    {/*Footer：固定在右侧容器底部，永远可见！不会被内容挤掉*/}
+                    <footer class="h-12 bg-white border-t border-slate-200 flex flex-col justify-center items-center px-4 py-1">
                         <h1 class="text-center font-thin p-1">Chameleon‑UI © 2026</h1>
-                        <h3 class="text-center text-xs">Technical support:Wang Wei - Architect | WeChat:mumuago |
-                            Email:1211884772@qq.com</h3>
+                        <h2 class="text-center text-xs">Technical support:Wang Wei - Architect | WeChat:mumuago |
+                            Email:1211884772@qq.com</h2>
                     </footer>
                 </div>
             </div>

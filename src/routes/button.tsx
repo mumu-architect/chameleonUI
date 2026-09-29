@@ -34,7 +34,28 @@ export default function buttonLayout(props: ParentProps) {
                 {/*  黄色带边框 */}
                 <Button.Root
                     loading
-                    class="px-4 py-2 rounded transition-colors disabled:opacity-60 bg-amber-200 text-black border-gray-500  hover:bg-gray-100 active:bg-amber-600"
+                    class="px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-60
+         bg-amber-400 text-amber-950 border border-amber-500
+         hover:bg-amber-300
+         active:bg-amber-500 active:text-white"
+                >
+                    Click me
+                </Button.Root>
+                <Button.Root
+                    loading
+                    class="px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-60
+         bg-amber-100 text-amber-800 border border-amber-300
+         hover:bg-amber-200
+         active:bg-amber-300"
+                >
+                    Click me
+                </Button.Root>
+                <Button.Root
+                    loading
+                    class="px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-60
+         bg-amber-500 text-white border border-amber-600
+         hover:bg-amber-400
+         active:bg-amber-600"
                 >
                     Click me
                 </Button.Root>

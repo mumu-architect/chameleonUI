@@ -23,7 +23,7 @@ export function Q_Button(props: UiButtonProps) {
             case "ghost":
                 return "border-gray-300 text-gray-700 hover:bg-gray-100";
             case "yellow":
-                return "bg-amber-200 text-black border-gray-500  hover:bg-gray-100";
+                return "bg-amber-400 text-amber-950 border border-amber-500 hover:bg-amber-300 active:bg-amber-500 active:text-white";
             case "primary":
             default:
                 return "bg-blue-600 text-white border-blue-700 hover:bg-blue-700 active:bg-blue-800";

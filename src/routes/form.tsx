@@ -114,7 +114,7 @@ export default function formLayout(props: ParentProps) {
     };
 
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Form</h1>
             <h1 class="font-medium text-red-800 border-b">Input</h1>
 
