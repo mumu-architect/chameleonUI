@@ -4,7 +4,7 @@ import * as ToggleGroup from "@solidiom/toggle-group"
 // page inside it under this component.
 export default function toggleGroupLayout(props: ParentProps) {
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>ToggleGroup</h1>
             <h1 class="font-medium text-red-800 border-b"> single selection</h1>
 

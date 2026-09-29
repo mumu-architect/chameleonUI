@@ -11,7 +11,7 @@ export default function dialogLayout(props: ParentProps) {
         setOpen(false);
     };
     return (
-        <main class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Dialog</h1>
             <div>
                 <Dialog.Root>

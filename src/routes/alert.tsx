@@ -5,7 +5,7 @@ import {Q_Alert} from "../components/Alter";
 // page inside it under this component.
 export default function tableLayout(props: ParentProps) {
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Alert</h1>
             <div class="space-y-4">
                     <Alert.Root type="info" class="p-4 rounded-lg border border-blue-200 bg-blue-50">

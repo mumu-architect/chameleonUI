@@ -184,7 +184,7 @@ export default function dataTableLayout(props: ParentProps) {
         return pages;
     };
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>DataTable</h1>
             <div>
                 <DataTable.Root data={sortedData()} columns={columnsTable()} class="w-full" >
@@ -241,17 +241,16 @@ export default function dataTableLayout(props: ParentProps) {
                         <Table.Cell class="border-gray-200 px-4 py-3 flex justify-end">
                             {/* Pagination */}
                             <Pagination.Root
-                                total={total()}
-                                pageSize={pageSize}
-                                page={currentPage}
-                                onPageChange={setCurrentPage}
-                                class="min-w-6 w-130"
+                                // total={total()}
+                                // pageSize={pageSize}
+                                // page={currentPage}
+                                // onPageChange={setCurrentPage}
                             >
                                 <Pagination.Content>
                                     <div class="flex gap-2 items-center mt-4">
                                         <div class="px-3 py-1.5 border rounded hover:bg-gray-100">Row : [ {total()} ]</div>
                                         <Pagination.PreviousButton
-                                            class="px-3 py-1.5 border rounded hover:bg-gray-100 data-[disabled]:opacity-50"
+                                            class="px-3 py-1.5 border rounded hover:bg-blue-500 hover:text-white data-[disabled]:opacity-50"
                                         >
                                             Prev
                                         </Pagination.PreviousButton>
@@ -263,8 +262,8 @@ export default function dataTableLayout(props: ParentProps) {
                                                         <Pagination.Ellipsis class="px-2">…</Pagination.Ellipsis>
                                                     ) : (
                                                         <Pagination.Item
-                                                            page={p}
-                                                            class= {currentPage()===p?"bg-blue-500 text-white px-3 py-1.5 border rounded hover:bg-blue-300 data-[active]:bg-slate-200":"px-3 py-1.5 border rounded hover:bg-blue-500 data-[active]:bg-slate-200" }
+                                                            // page={p}
+                                                            class= {currentPage()===p?"bg-blue-500 text-white px-3 py-1.5 border rounded hover:bg-blue-300 data-[active]:bg-slate-200":"px-3 py-1.5 border rounded hover:bg-blue-500 hover:text-white  data-[active]:bg-slate-200" }
                                                         >
                                                             {p}
                                                         </Pagination.Item>
@@ -274,7 +273,7 @@ export default function dataTableLayout(props: ParentProps) {
                                         </For>
 
                                         <Pagination.NextButton
-                                            class="px-3 py-1.5 border rounded hover:bg-gray-100 data-[disabled]:opacity-50"
+                                            class="px-3 py-1.5 border rounded hover:bg-blue-500 hover:text-white data-[disabled]:opacity-50"
                                         >
                                             Next
                                         </Pagination.NextButton>

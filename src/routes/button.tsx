@@ -5,7 +5,7 @@ import {Q_Button} from "../components/Button";
 // page inside it under this component.
 export default function buttonLayout(props: ParentProps) {
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Button</h1>
             <div>
                 {/* primary 蓝色填充 + 边框 */}

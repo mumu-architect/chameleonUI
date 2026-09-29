@@ -4,7 +4,7 @@ import type { ParentProps } from 'solid-js';
 // page inside it under this component.
 export default function ChartsLayout(props: ParentProps) {
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Charts</h1>
             {props.children}
         </main>

@@ -4,7 +4,7 @@ import * as Menu from "@solidiom/menu"
 // page inside it under this component.
 export default function menuLayout(props: ParentProps) {
     return (
-        <main  class="flex-1 overflow-auto p-6 border-t-0 border ">
+        <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Menu</h1>
             <div>
                 <Menu.Root>Menu content</Menu.Root>
