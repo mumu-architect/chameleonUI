@@ -1,5 +1,6 @@
 # chameleonUI
-chameleonUI,新建 SolidStart + 最新版 SolidJS + Kobalte + TailwindCSS v4
+>- ChameleonUI Front end UI framework.
+>- 1.New SolidStart+Latest SolidJS V2.0+ @solidiom/core + TailwindCSS v4
 
 
 ## Solid `basic` template
