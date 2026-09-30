@@ -312,6 +312,49 @@ export default function paginationLayout(props: ParentProps) {
                         <div class="flex gap-2 items-center mt-4">
                             <div class="px-3 py-1.5 border rounded hover:bg-gray-100">Row : [ {total()} ]</div>
                             <Pagination.PreviousButton
+                                class="px-3 py-1.5 border rounded hover:bg-yellow-300 hover:text-white data-[disabled]:opacity-50"
+                            >
+                                Prev
+                            </Pagination.PreviousButton>
+
+                            <For each={getPageNumbers(currentPage(), Math.ceil(total() / pageSize))}>
+                                {(p) => (
+                                    <>
+                                        {p === "ellipsis" ? (
+                                            <Pagination.Ellipsis class="px-2">…</Pagination.Ellipsis>
+                                        ) : (
+                                            <Pagination.Item
+                                                // page={p}
+                                                class= {currentPage()===p?"bg-yellow-300 text-white px-3 py-1.5 border rounded hover:bg-yellow-500 data-[active]:bg-slate-200":"px-3 py-1.5 border rounded hover:bg-yellow-300 hover:text-white  data-[active]:bg-slate-200" }
+                                            >
+                                                {p}
+                                            </Pagination.Item>
+                                        )}
+                                    </>
+                                )}
+                            </For>
+
+                            <Pagination.NextButton
+                                class="px-3 py-1.5 border rounded hover:bg-yellow-300 hover:text-white  data-[disabled]:opacity-50"
+                            >
+                                Next
+                            </Pagination.NextButton>
+                        </div>
+                    </Pagination.Content>
+                </Pagination.Root>
+            </div>
+            <div>
+                {/* Pagination */}
+                <Pagination.Root
+                    // total={total()}
+                    // pageSize={pageSize}
+                    // page={currentPage}
+                    // onPageChange={setCurrentPage}
+                >
+                    <Pagination.Content>
+                        <div class="flex gap-2 items-center mt-4">
+                            <div class="px-3 py-1.5 border rounded hover:bg-gray-100">Row : [ {total()} ]</div>
+                            <Pagination.PreviousButton
                                 class="px-3 py-1.5 border rounded hover:bg-gray-500 hover:text-white data-[disabled]:opacity-50"
                             >
                                 Prev

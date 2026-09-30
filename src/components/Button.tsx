@@ -7,12 +7,23 @@ export type UiButtonProps = {
     onClick?: () => void;
     loading?: boolean;
     disabled?: boolean;
+    type?: "standard"|"circle";
     variant?: "primary" | "secondary" | "danger" | "yellow" | "ghost";
 };
 
 export function Q_Button(props: UiButtonProps) {
-    const base = "px-4 py-2 rounded transition-colors disabled:opacity-60 border";
-
+    const base = "px-3 py-1.5 rounded transition-colors disabled:opacity-60 border justify-center text-center inline-flex items-center gap-2 m-1.5 ";
+    const circleBase ="inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors disabled:opacity‑60 border  focus:ring‑2 focus:ring‑blue‑300 focus:outline-none  m-1.5 ";
+    const getType=()=>{
+        switch (props.type){
+            case "standard":
+                return base
+            case "circle":
+                return circleBase
+            default:
+                return base;
+        }
+    }
     const getVariantClass = () => {
         switch (props.variant) {
             // secondary 修改为绿色填充+同色系边框
@@ -23,10 +34,10 @@ export function Q_Button(props: UiButtonProps) {
             case "ghost":
                 return "border-gray-300 text-gray-700 hover:bg-gray-100";
             case "yellow":
-                return "bg-amber-400 text-amber-950 border border-amber-500 hover:bg-amber-300 active:bg-amber-500 active:text-white";
+                return "bg-amber-400 text-amber-950 border border-amber-500 hover:bg-amber-300 active:bg-amber-500 active:text-white ";
             case "primary":
             default:
-                return "bg-blue-600 text-white border-blue-700 hover:bg-blue-700 active:bg-blue-800";
+                return "bg-blue-600 text-white border-blue-700 hover:bg-blue-700 active:bg-blue-800  ";
         }
     };
     return (
@@ -34,7 +45,7 @@ export function Q_Button(props: UiButtonProps) {
             onClick={props.onClick}
             loading={props.loading}
             disabled={props.disabled}
-            class={`${base} ${getVariantClass()}`}
+            class={`${getType()} ${getVariantClass()}`}
         >
             {props.children}
         </Button.Root>
