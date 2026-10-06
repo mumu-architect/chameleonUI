@@ -44,7 +44,7 @@ export default function formLayout(props: ParentProps) {
     //RadioGroup selected
     const [selected, setSelected] = createSignal("scales");
     //select selected
-    const [selectedVal, setSelectedVal] = createSignal<string | undefined>(undefined);
+    const [selectedVal, setSelectedVal] = createSignal<string |string[]| undefined>(undefined);
     const [isOpen, setIsOpen] = createSignal(false);
 
     const displayText = () => {
@@ -113,6 +113,27 @@ export default function formLayout(props: ParentProps) {
         setRawItems(prev => prev.filter(x => x.uid !== uid));
     };
 
+
+    //代码手动修改时间
+    const [time, setTime] = createSignal<TimeInput.TimeInputValue>({
+        hour:11,
+        minute:25,
+        second:16,
+    });
+//
+//     function dateToTimeStr(date: Date): TimeInput.TimeInputValue {
+//         let hour =Number(String(date.getHours()).padStart(2, "0")) ;
+//         let minute =Number(String(date.getMinutes()).padStart(2, "0"));
+//         let second =Number(String(date.getSeconds()).padStart(2, "0"));
+//         return {
+//             hour:hour,
+//             minute:minute,
+//             second:second,
+//         };
+//     }
+//
+// // 使用
+//     setTime(dateToTimeStr(new Date()));
     return (
         <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Form</h1>
@@ -429,22 +450,124 @@ export default function formLayout(props: ParentProps) {
             </div>
             <h1 class="font-medium text-red-800 border-b">NumberInput</h1>
             <div class="flex flex-direction gap-12">
-
-            <NumberInput.Root>
-                <NumberInput.DecrementButton>−</NumberInput.DecrementButton>
-                <NumberInput.Input />
-                <NumberInput.IncrementButton>+</NumberInput.IncrementButton>
+            <NumberInput.Root
+                defaultValue={10}
+                min={0}
+                max={999} class="flex w-[220px] items-stretch overflow-hidden rounded-lg border border-gray-300 font-sans text-sm">
+                <NumberInput.DecrementButton class="w-9 border-none bg-gray-100 text-gray-800 text-lg transition-colors hover:bg-gray-200 active:bg-gray-300 cursor-pointer">−</NumberInput.DecrementButton>
+                <NumberInput.Input class="flex-1 border-none px-2 text-center outline-none focus:ring-0 focus:border-none" />
+                <NumberInput.IncrementButton class="w-9 border-none bg-gray-100 text-gray-800 text-lg transition-colors hover:bg-gray-200 active:bg-gray-300 cursor-pointer">+</NumberInput.IncrementButton>
             </NumberInput.Root>
+                <NumberInput.Root
+                    defaultValue={10}
+                    min={0}
+                    max={999} class="flex w-[220px] items-stretch overflow-hidden rounded-lg border border-blue-300 font-sans text-sm">
+                    <NumberInput.DecrementButton class="w-9 border-none bg-blue-100 text-gray-800 text-lg transition-colors hover:bg-blue-200 active:bg-blue-300 cursor-pointer">−</NumberInput.DecrementButton>
+                    <NumberInput.Input class="flex-1 border-none px-2 text-center outline-none focus:ring-0 focus:border-none" />
+                    <NumberInput.IncrementButton class="w-9 border-none bg-blue-100 text-gray-800 text-lg transition-colors hover:bg-blue-200 active:bg-blue-300 cursor-pointer">+</NumberInput.IncrementButton>
+                </NumberInput.Root>
+
+                <NumberInput.Root
+                    defaultValue={10}
+                    min={0}
+                    max={999} class="flex w-[220px] items-stretch overflow-hidden rounded-lg border border-red-300 font-sans text-sm">
+                    <NumberInput.DecrementButton class="w-9 border-none bg-red-100 text-gray-800 text-lg transition-colors hover:bg-red-200 active:bg-red-300 cursor-pointer">−</NumberInput.DecrementButton>
+                    <NumberInput.Input class="flex-1 border-none px-2 text-center outline-none focus:ring-0 focus:border-none" />
+                    <NumberInput.IncrementButton class="w-9 border-none bg-red-100 text-gray-800 text-lg transition-colors hover:bg-red-200 active:bg-red-300 cursor-pointer">+</NumberInput.IncrementButton>
+                </NumberInput.Root>
+                <NumberInput.Root
+                    defaultValue={10}
+                    min={0}
+                    max={999} class="flex w-[220px] items-stretch overflow-hidden rounded-lg border border-blue-300 font-sans text-sm">
+                    <NumberInput.DecrementButton class="w-9 border-none bg-green-100 text-gray-800 text-lg transition-colors hover:bg-green-200 active:bg-green-300 cursor-pointer">−</NumberInput.DecrementButton>
+                    <NumberInput.Input class="flex-1 border-none px-2 text-center outline-none focus:ring-0 focus:border-none" />
+                    <NumberInput.IncrementButton class="w-9 border-none bg-green-100 text-gray-800 text-lg transition-colors hover:bg-green-200 active:bg-green-300 cursor-pointer">+</NumberInput.IncrementButton>
+                </NumberInput.Root>
+                <NumberInput.Root
+                    defaultValue={10}
+                    min={0}
+                    max={999} class="flex w-[220px] items-stretch overflow-hidden rounded-lg border border-yellow-300 font-sans text-sm">
+                    <NumberInput.DecrementButton class="w-9 border-none bg-yellow-100 text-gray-800 text-lg transition-colors hover:bg-yellow-200 active:bg-yellow-300 cursor-pointer">−</NumberInput.DecrementButton>
+                    <NumberInput.Input class="flex-1 border-none px-2 text-center outline-none focus:ring-0 focus:border-none" />
+                    <NumberInput.IncrementButton class="w-9 border-none bg-yellow-100 text-gray-800 text-lg transition-colors hover:bg-yellow-200 active:bg-yellow-300 cursor-pointer">+</NumberInput.IncrementButton>
+                </NumberInput.Root>
             </div>
             <h1 class="font-medium text-red-800 border-b">TimeInput </h1>
             <div class="flex flex-direction gap-12">
-                <TimeInput.Root>
-                    <TimeInput.Segment/>
-                    <TimeInput.Separator>:</TimeInput.Separator>
-                    <TimeInput.Segment />
-                    <TimeInput.Separator>:</TimeInput.Separator>
-                    <TimeInput.Segment />
-                    <TimeInput.Segment />
+                <TimeInput.Root
+                    defaultValue={time()}
+                    onValueChange={setTime}
+                    showSeconds={true}
+                    class="group flex items-center gap-0.5 w-[220px] rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm
+             focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-200
+             dark:border-gray-700 dark:bg-gray-900 dark:text-white"
+                >
+                    <TimeInput.Segment type="hour" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="minute" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="second" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Segment type="period" class="w-10 text-center outline-none caret-transparent" />
+                </TimeInput.Root>
+                <TimeInput.Root
+                    defaultValue={time()}
+                    onValueChange={setTime}
+                    showSeconds={true}
+                    class="group flex items-center gap-0.5 w-[220px] rounded-md border border-blue-300 bg-white px-2 py-1.5 text-sm
+             focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-200
+             dark:border-blue-700 dark:bg-blue-900 dark:text-white"
+                >
+                    <TimeInput.Segment type="hour" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="minute" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="second" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Segment type="period" class="w-10 text-center outline-none caret-transparent" />
+                </TimeInput.Root>
+                <TimeInput.Root
+                    defaultValue={time()}
+                    onValueChange={setTime}
+                    showSeconds={true}
+                    class="group flex items-center gap-0.5 w-[220px] rounded-md border border-red-300 bg-white px-2 py-1.5 text-sm
+             focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-200
+             dark:border-red-700 dark:bg-red-900 dark:text-white"
+                >
+                    <TimeInput.Segment type="hour" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="minute" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="second" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Segment type="period" class="w-10 text-center outline-none caret-transparent" />
+                </TimeInput.Root>
+                <TimeInput.Root
+                    defaultValue={time()}
+                    onValueChange={setTime}
+                    showSeconds={true}
+                    class="group flex items-center gap-0.5 w-[220px] rounded-md border border-green-300 bg-white px-2 py-1.5 text-sm
+             focus-within:border-green-500 focus-within:ring-1 focus-within:ring-green-200
+             dark:border-green-700 dark:bg-green-900 dark:text-white"
+                >
+                    <TimeInput.Segment type="hour" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="minute" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="second" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Segment type="period" class="w-10 text-center outline-none caret-transparent" />
+                </TimeInput.Root>
+                <TimeInput.Root
+                    defaultValue={time()}
+                    onValueChange={setTime}
+                    showSeconds={true}
+                    class="group flex items-center gap-0.5 w-[220px] rounded-md border border-yellow-300 bg-white px-2 py-1.5 text-sm
+             focus-within:border-yellow-500 focus-within:ring-1 focus-within:ring-yellow-200
+             dark:border-yellow-700 dark:bg-yellow-900 dark:text-white"
+                >
+                    <TimeInput.Segment type="hour" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="minute" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Separator class="text-gray-500">:</TimeInput.Separator>
+                    <TimeInput.Segment type="second" class="w-8 text-center outline-none caret-transparent" />
+                    <TimeInput.Segment type="period" class="w-10 text-center outline-none caret-transparent" />
                 </TimeInput.Root>
             </div>
             <h1 class="font-medium text-red-800 border-b">Textarea</h1>
