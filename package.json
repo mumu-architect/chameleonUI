@@ -32,6 +32,7 @@
     "@solidiom/alert": "^0.5.0",
     "@solidiom/alert-dialog": "^0.5.0",
     "@solidiom/button": "^0.5.0",
+    "@solidiom/chart": "^0.6.0",
     "@solidiom/checkbox": "^0.5.0",
     "@solidiom/data-table": "^0.5.0",
     "@solidiom/date-picker": "^0.5.0",
@@ -52,6 +53,7 @@
     "@solidjs/meta": "^1.0.0-next.2",
     "@solidjs/router": "^2.0.0-next.26",
     "@solidjs/web": "^2.0.0-rc.9",
+    "apexcharts": "^8.0.0",
     "solid-js": "^2.0.0-rc.9"
   }
 }

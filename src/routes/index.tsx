@@ -6,33 +6,79 @@ import {Icon } from "@iconify-icon/solid";
 import tooltipLayout from "./tooltip";
 import {Q_Tooltip} from "../components/Tooltip";
 import paginationLayout from "./pagination";
+import {PathEnd} from "@solidjs/router";
+import {MenuItem, Q_MenuItem, TabItem} from "../components/Nav";
+
+
+
+// 👉 导航菜单数据（替换你原来tabs，点击叶子会addTabPage）
+const menuList: MenuItem[] = [
+    {
+        id: "dashboard",
+        label: "Dashboard",
+        icon: "ant-design:dashboard-outlined",
+        path: paths.dashboard
+    },
+    {
+        id: "form",
+        label: "Form",
+        icon: "boxicons:form",
+        children: [
+            { id: "form1", label: "Form1", icon: "ant-design:ordered-list-outlined" , path: paths.form},
+            { id: "input", label: "Input", icon: "ant-design:shopping-outlined" , path: paths.input},
+        ]
+    },
+    {id: "charts", icon: "famicons:stats-chart", label: "Charts", path: paths.charts},
+    {id: "datePicker", icon: "clarity:date-line", label: "DatePicker", path: paths.datePicker},
+    {id: "menu", icon: "bi:menu-button", label: "Menu", path: paths.menu},
+    {id: "table", icon: "boxicons:table", label: "Table", path: paths.table},
+    {id: "pagination", icon: "fluent:dual-screen-pagination-24-regular", label: "Pagination", path: paths.pagination},
+    {id: "dataTable", icon: "material-symbols:data-table", label: "DataTable", path: paths.dataTable},
+    {id: "toggleGroup", icon: "akar-icons:toggle-off-fill", label: "ToggleGroup", path: paths.toggleGroup},
+    {id: "button", icon: "cbi:button", label: "Button", path: paths.button},
+    {id: "alert", icon: "ant-design:alert-outlined", label: "Alert", path: paths.alert},
+    {id: "dialog", icon: "tdesign:dialog-history", label: "Dialog", path: paths.dialog},
+    {id: "tooltip", icon: "fluent-mdl2:diagnostic-data-bar-tooltip", label: "Tooltip", path: paths.tooltip},
+    {id: "icon", icon: "tdesign:icon", label: "Icon", path: paths.icon},
+    {id: "about", icon: "cib:about-me", label: "About", path: paths.about},
+    // {
+    //     id: "system",
+    //     label: "系统管理",
+    //     icon: "ant-design:setting-outlined",
+    //     children: [
+    //         { id: "user", label: "用户管理", icon: "ant-design:user-outlined"  ,path: paths.dashboard},
+    //         { id: "role", label: "角色权限", icon: "ant-design:lock-outlined" , path: paths.dashboard},
+    //         {
+    //             id: "log",
+    //             label: "日志中心",
+    //             icon: "ant-design:file-text-outlined",
+    //             children: [
+    //                 { id: "loginLog", label: "登录日志", icon: "ant-design:history-outlined" , path: paths.dashboard},
+    //                 { id: "operateLog", label: "操作日志", icon: "ant-design:audit-outlined" , path: paths.dashboard},
+    //             ]
+    //         }
+    //     ]
+    // }
+
+]
 
 
 export default  function indexLayout(props: ParentProps) {
     // 侧边栏折叠状态
-    const [sidebarCollapsed, setSidebarCollapsed] = createSignal(false);
+     const [sidebarCollapsed, setSidebarCollapsed] = createSignal(false);
     // 模拟打开的标签页
-    const [tabs, setTabs] = createSignal([
-        {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard", path: paths.dashboard},
-        {id: "user", icon: "carbon:user-profile", label: "User", path: paths.users(1)},
-        {id: "form", icon: "boxicons:form", label: "Form", path: paths.form},
-        {id: "charts", icon: "famicons:stats-chart", label: "Charts", path: paths.charts},
-        {id: "datePicker", icon: "clarity:date-line", label: "DatePicker", path: paths.datePicker},
-        {id: "menu", icon: "bi:menu-button", label: "Menu", path: paths.menu},
-        {id: "table", icon: "boxicons:table", label: "Table", path: paths.table},
-        {id: "pagination", icon: "fluent:dual-screen-pagination-24-regular", label: "Pagination", path: paths.pagination},
-        {id: "dataTable", icon: "material-symbols:data-table", label: "DataTable", path: paths.dataTable},
-        {id: "toggleGroup", icon: "akar-icons:toggle-off-fill", label: "ToggleGroup", path: paths.toggleGroup},
-        {id: "button", icon: "cbi:button", label: "Button", path: paths.button},
-        {id: "alert", icon: "ant-design:alert-outlined", label: "Alert", path: paths.alert},
-        {id: "dialog", icon: "tdesign:dialog-history", label: "Dialog", path: paths.dialog},
-        {id: "tooltip", icon: "fluent-mdl2:diagnostic-data-bar-tooltip", label: "Tooltip", path: paths.tooltip},
-        {id: "icon", icon: "tdesign:icon", label: "Icon", path: paths.icon},
-        {id: "about", icon: "cib:about-me", label: "About", path: paths.about},
-    ]);
-    const [navTabs,setNavTabs] = createSignal([
+    const [navTabs,setNavTabs] = createSignal<TabItem[]>([
         {id: "dashboard", icon: "ant-design:dashboard-outlined", label: "Dashboard",display:true,close:false, path: paths.dashboard},
     ]);
+    const [expandedMenus, setExpandedMenus] = createSignal<Record<string, boolean>>({})
+
+    // 切换菜单展开/折叠
+    const toggleMenu = (menuId: string) => {
+        setExpandedMenus(prev => ({
+            ...prev,
+            [menuId]: !prev[menuId]
+        }))
+    }
     const addTabPage = (tabId :string):boolean => {
         //判断是否已经打开
        // (navTabs )
@@ -56,13 +102,19 @@ export default  function indexLayout(props: ParentProps) {
                 return { ...item, display: false };
             }
         }));
-        for (let item of tabs()){
-            if(item.id===tabId){
-                setNavTabs(prev => [...prev,{id:item.id, icon: item.icon, label: item.label, display:true,close:true,path: item.path}]);
-            }
-        }
+         recursionMenuList(tabId,menuList)
         return true
     };
+
+    const recursionMenuList=(tabId :string,menuList:MenuItem[] )=>{
+        for (let item of menuList){
+            if(item.id===tabId){
+                setNavTabs(prev => [...prev,{id:item.id, icon: item.icon, label: item.label, display:true,close:true,path: item.path}]);
+            }else if(!!item.children?.length){
+                recursionMenuList(tabId,item.children)
+            }
+        }
+    }
     // 关闭tab
     const removeTab = (tabId: string) => {
         setNavTabs(navTabs().filter((t) => t.id !== tabId))
@@ -89,29 +141,50 @@ export default  function indexLayout(props: ParentProps) {
                         sidebarCollapsed() ? "w-16" : "w-56"
                     }`}
                 >
-                    {/*<aside class="w-56 shrink-0 bg-slate-800 text-white flex flex-col">*/}
                     {/* 侧边栏头部Logo区域 */}
                     <div class="px-4 py-4 text-xl font-bold border-b border-slate-700 flex items-center gap-2">
-                        <Icon icon="lucide-lab:chameleon"/>
+                        <Icon icon="lucide-lab:chameleon" width="24" height="24"/>
                         <span class={sidebarCollapsed() ? "hidden" : ""}>Chameleon‑UI</span>
                     </div>
-                    <nav class="flex-1 px-2 py-3 space-y-1 overflow-y-auto">
-                        {/*<a  onClick={()=>addTabPage("dashboard")}*/}
-                        {/*   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">*/}
-                        {/*    <Icon icon="ant-design:dashboard-outlined" width="24" height="24"/>*/}
-                        {/*    <span class={sidebarCollapsed() ? "hidden" : ""}>Dashboard</span>*/}
-                        {/*</a>*/}
-                        <For each={tabs()}>
-                            {(item) => (
-                                <a onClick={()=>addTabPage(item.id)}
-                                   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700"><Icon icon={item.icon} width="24" height="24"/>
 
-                                    <span class={sidebarCollapsed() ? "hidden" : ""}>{item.label}</span>
-                                </a>
-                            )}
+                    <nav class="flex-1 px-2 py-3 space-y-1 overflow-y-auto">
+                        <For each={menuList}>
+                            {(item) =>
+                                <Q_MenuItem item={item} sidebarCollapsed={sidebarCollapsed()} addTabPage={addTabPage} toggleMenu={toggleMenu} expandedMenus={expandedMenus()}/>
+                            }
                         </For>
                     </nav>
                 </aside>
+                {/* 左侧侧边栏，slide收缩动画 */}
+                {/*<aside*/}
+                {/*    class={`shrink-0 bg-slate-800 text-white flex flex-col transition-all duration-300 ease-in-out ${*/}
+                {/*        sidebarCollapsed() ? "w-16" : "w-56"*/}
+                {/*    }`}*/}
+                {/*>*/}
+                {/*    /!*<aside class="w-56 shrink-0 bg-slate-800 text-white flex flex-col">*!/*/}
+                {/*    /!* 侧边栏头部Logo区域 *!/*/}
+                {/*    <div class="px-4 py-4 text-xl font-bold border-b border-slate-700 flex items-center gap-2">*/}
+                {/*        <Icon icon="lucide-lab:chameleon"/>*/}
+                {/*        <span class={sidebarCollapsed() ? "hidden" : ""}>Chameleon‑UI</span>*/}
+                {/*    </div>*/}
+                {/*    <nav class="flex-1 px-2 py-3 space-y-1 overflow-y-auto">*/}
+                {/*        /!*<a  onClick={()=>addTabPage("dashboard")}*!/*/}
+                {/*        /!*   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">*!/*/}
+                {/*        /!*    <Icon icon="ant-design:dashboard-outlined" width="24" height="24"/>*!/*/}
+                {/*        /!*    <span class={sidebarCollapsed() ? "hidden" : ""}>Dashboard</span>*!/*/}
+                {/*        /!*</a>*!/*/}
+                {/*        <For each={tabs()}>*/}
+                {/*            {(item) => (*/}
+                {/*                <a onClick={()=>addTabPage(item.id)}*/}
+                {/*                   class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700">*/}
+                {/*                    <Icon icon={item.icon} width="24" height="24"/>*/}
+
+                {/*                    <span class={sidebarCollapsed() ? "hidden" : ""}>{item.label}</span>*/}
+                {/*                </a>*/}
+                {/*            )}*/}
+                {/*        </For>*/}
+                {/*    </nav>*/}
+                {/*</aside>*/}
                 {/*右侧整体垂直布局*/}
                 <div class="flex-1 flex flex-col h-full overflow-hidden">
                     <header
@@ -166,7 +239,7 @@ export default  function indexLayout(props: ParentProps) {
                         <Loading fallback={<main>Loading…</main>}>
                             <iframe
                                 id={tab.id}
-                        src={tab.path.toString()}
+                        src={tab.path?tab.path.toString():""}
                         style={ {display:tab.display?"block":"none",border:"none"}}
                         title={tab.id}
                                 class="w-full h-full border border-slate-200 rounded-lg block "

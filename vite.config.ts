@@ -16,6 +16,7 @@ export default defineConfig({
     fileRoutes({ types: true }),
     tailwindcss(),
   ],
+
   server: {
     port: 3000,
   },

@@ -1,7 +1,7 @@
 # chameleonUI
 > ChameleonUI Front‑end UI Framework.
 >
->1.New SolidStart+Latest SolidJS V2.0+ @solidiom/core + TailwindCSS v4
+>1.New SolidStart+Latest SolidJS V2.0+ @solidiom/core + TailwindCSS v4 + apexcharts
 
 ## Contact Us
 > Wechat: mumuago
