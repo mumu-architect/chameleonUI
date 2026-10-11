@@ -2,6 +2,7 @@ import {createSignal, ParentProps} from "solid-js";
 import * as Dialog from "@solidiom/dialog"
 import * as AlertDialog from "@solidiom/alert-dialog"
 import {Q_AlertDialog} from "../components/AlterDialog";
+import {Q_Dialog} from "../components/Dialog";
 
 export default function dialogLayout(props: ParentProps) {
     const [open, setOpen] = createSignal(false);
@@ -10,9 +11,18 @@ export default function dialogLayout(props: ParentProps) {
         console.log("Account deleted");
         setOpen(false);
     };
+
+
+    const [openDialog, setOpenDialog] = createSignal(false);
+
+    const handleDeleteDialog = () => {
+        console.log("Account deleted");
+        setOpen(false);
+    };
     return (
         <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Dialog</h1>
+            <h1 class="font-medium text-red-800 border-b"> Dialog</h1>
             <div>
                 <Dialog.Root>
                     <Dialog.Trigger><div class="font-bold">Open dialog</div></Dialog.Trigger>
@@ -30,6 +40,7 @@ export default function dialogLayout(props: ParentProps) {
                     </Dialog.Portal>
                 </Dialog.Root>
             </div>
+            <h1 class="font-medium text-red-800 border-b"> AlertDialog</h1>
             <div>
                 <AlertDialog.Root defaultOpen={false} onOpenChange={(open) => console.log(open)}>
                     <AlertDialog.Trigger><div class="font-bold">Delete Account</div></AlertDialog.Trigger>
@@ -70,6 +81,24 @@ export default function dialogLayout(props: ParentProps) {
                         onConfirm={handleDelete}
                     />
                 </AlertDialog.Root>
+            </div>
+            <h1 class="font-medium text-red-800 border-b"> Q_Dialog components</h1>
+            <div>
+                <Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
+                    <Dialog.Trigger>
+                        <div class="font-bold cursor-pointer">Open Dialog</div>
+                    </Dialog.Trigger>
+
+                    <Q_Dialog
+                        open={openDialog}
+                        setOpen={setOpenDialog}
+                        title="Delete your account?"
+                        description="This action cannot be undone. All your data will be permanently removed."
+                        confirmText="Delete"
+                        cancelText="Cancel"
+                        onConfirm={handleDeleteDialog}
+                    />
+                </Dialog.Root>
             </div>
         </main>
     );

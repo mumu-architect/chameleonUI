@@ -20,7 +20,7 @@ export default function dashboardLayout(props: ParentProps) {
                                     <Icon icon="ic:sharp-family-restroom" width="50" />
                                 </div>
                                 <div>
-                                    <p class="text-slate-500 text-sm mb-1">User count:</p>
+                                    <p class="text-slate-500 text-sm mb-1">User Count:</p>
                                     <p class="text-2xl font-bold text-slate-800">30000 people</p>
                                 </div>
                             </div>
