@@ -3,11 +3,8 @@ import {createSignal, Loading, For } from 'solid-js';
 import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
-import tooltipLayout from "./tooltip";
-import {Q_Tooltip} from "../components/Tooltip";
-import paginationLayout from "./pagination";
-import {PathEnd} from "@solidjs/router";
 import {MenuItem, Q_MenuItem, TabItem} from "../components/Nav";
+import fileUploadLayout from "./fileUpload";
 
 
 
@@ -20,15 +17,28 @@ const menuList: MenuItem[] = [
         path: paths.dashboard
     },
     {
+        id: "layout ",
+        label: "Layout ",
+        icon: "ant-design:layout-filled",
+        path: paths.layout
+    },
+    {
         id: "form",
         label: "Form",
         icon: "boxicons:form",
         children: [
             { id: "form1", label: "Form1", icon: "ant-design:ordered-list-outlined" , path: paths.form},
             { id: "input", label: "Input", icon: "at-icons:text" , path: paths.input},
+            { id: "checkbox", label: "Checkbox", icon: "clarity:checkbox-list-line" , path: paths.checkbox},
+            { id: "radio", label: "Radio", icon: "at-icons:radio-button" , path: paths.radio},
+            { id: "select", label: "Select", icon: "fluent-mdl2:multi-select-mirrored" , path: paths.select},
+            { id: "switch", label: "Switch", icon: "entypo:switch" , path: paths.switch},
+            { id: "fileUpload", label: "FileUpload", icon: "griddy-icons:file-upload" , path: paths.fileUpload},
+            { id: "numberInput", label: "NumberInput", icon: "fluent-mdl2:number-field" , path: paths.numberInput},
+            { id: "textarea", label: "Textarea", icon: "bi:textarea-t" , path: paths.textarea},
+
             { id: "editor", label: "TiptapEditor", icon: "formkit:textarea" , path: paths.tiptapEditor},
             { id: "editor1", label: "JoditEditor", icon: "formkit:textarea" , path: paths.joditEditor},
-
 
         ]
     },

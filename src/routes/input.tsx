@@ -16,7 +16,7 @@ export default function inputLayout(props: ParentProps) {
                 <Input.Root type="text" invalid placeholder="Has error" aria-invalid="true" class="h-9 w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm transition-colors placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400 aria-[invalid=true]:border-red-500 aria-[invalid=true]:ring-red-500"/>
             </div>
 
-            <h1 class="font-medium text-red-800 border-b">Input conponents</h1>
+            <h1 class="font-medium text-red-800 border-b">Input components</h1>
 
             <div class="flex flex-direction gap-12">
                 <Q_Input type="text" placeholder="Default Blue" />

@@ -1,5 +1,4 @@
 import type {Accessor, Setter} from "solid-js";
-import * as AlertDialog from "@solidiom/alert-dialog";
 import * as Dialog from "@solidiom/dialog";
 
 type ConfirmDialogProps = {

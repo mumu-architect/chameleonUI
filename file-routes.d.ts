@@ -81,15 +81,21 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/form";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
+      $$route?: undefined;
+    },
+    {
       path: "/icon";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/icon")>;
       $$route?: undefined;
     },
     {
-      path: "/input";
+      path: "/joditEditor";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/joditEditor")>;
       $$route?: undefined;
     },
     {
@@ -114,6 +120,12 @@ declare module "virtual:file-routes" {
       path: "/table";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/table")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/tiptapEditor";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/tiptapEditor")>;
       $$route?: undefined;
     },
     {
@@ -153,27 +165,63 @@ declare module "virtual:file-routes" {
       $$route: FileRouteEagerRef<typeof import("./src/routes/users/[id]")>;
     },
     {
+      path: "/radio";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/radio")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/checkbox";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/checkbox")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/select";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/select")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/layout";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/layout")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/input";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/switch";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/switch")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/fileUpload";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/fileUpload")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/numberInput";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/numberInput")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/textarea";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/textarea")>;
+      $$route?: undefined;
+    },
+    {
       path: "/";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/form";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/tiptapEditor";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/tiptapEditor")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/joditEditor";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/joditEditor")>;
       $$route?: undefined;
     }
   ];
@@ -186,6 +234,14 @@ declare module "virtual:file-routes" {
       id: "/";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/form";
+      id: "/form";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -214,14 +270,6 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/form";
-      id: "/form";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
       path: "/about";
       id: "/about";
       page: true;
@@ -234,14 +282,6 @@ declare module "virtual:file-routes" {
       id: "/alert";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/alert")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
-      path: "/input";
-      id: "/input";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -279,6 +319,22 @@ declare module "virtual:file-routes" {
       ];
     },
     {
+      path: "/radio";
+      id: "/radio";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/radio")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/input";
+      id: "/input";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/button";
       id: "/button";
       page: true;
@@ -303,10 +359,50 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
+      path: "/select";
+      id: "/select";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/select")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/layout";
+      id: "/layout";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/layout")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/switch";
+      id: "/switch";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/switch")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/tooltip";
       id: "/tooltip";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/tooltip")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/checkbox";
+      id: "/checkbox";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/checkbox")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/textarea";
+      id: "/textarea";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/textarea")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -343,10 +439,10 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/toggleGroup";
-      id: "/toggleGroup";
+      path: "/fileUpload";
+      id: "/fileUpload";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/fileUpload")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -359,10 +455,18 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/index/:index";
-      id: "/index/:index";
+      path: "/toggleGroup";
+      id: "/toggleGroup";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/index/[index]")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/numberInput";
+      id: "/numberInput";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/numberInput")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -371,6 +475,14 @@ declare module "virtual:file-routes" {
       id: "/tiptapEditor";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/tiptapEditor")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/index/:index";
+      id: "/index/:index";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/index/[index]")>;
       $$route?: undefined;
       children?: undefined;
     }

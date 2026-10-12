@@ -3,9 +3,8 @@ import * as Input from "@solidiom/input";
 
 
 
-export type InputColor = "blue" | "green" | "yellow" | "gray" | "red";
-
-export type UiInputProps = ComponentProps<typeof Input.Root> & {
+type InputColor = "blue" | "green" | "yellow" | "gray" | "red";
+type UiInputProps = ComponentProps<typeof Input.Root> & {
     color?: InputColor;
 };
 

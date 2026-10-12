@@ -2,7 +2,7 @@
 import * as Button from "@solidiom/button";
 import {JSX} from "@solidjs/web";
 
-export type UiButtonProps = {
+type UiButtonProps = {
     children: JSX.Element;
     onClick?: () => void;
     loading?: boolean;

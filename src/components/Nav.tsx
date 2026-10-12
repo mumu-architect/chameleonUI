@@ -18,7 +18,7 @@ export type TabItem = {
     close: boolean;
     path?: PathEnd;
 };
-export type QMenuItemProps = {
+type QMenuItemProps = {
     item: MenuItem;
     sidebarCollapsed: boolean;
     addTabPage: (id: string) => boolean;

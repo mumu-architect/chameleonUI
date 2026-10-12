@@ -1,11 +1,12 @@
 import ApexCharts, {ApexOptions} from "apexcharts";
 import {createEffect, onCleanup, onSettled, untrack} from "solid-js";
 
-
-export function Q_ApexCharts(props: {
+type Options = {
     class?: string;
     options: ApexOptions;
-}) {
+}
+
+export function Q_ApexCharts(props:Options) {
     let chartDom: HTMLDivElement | undefined;
     let chartIns: ApexCharts | null = null;
 
