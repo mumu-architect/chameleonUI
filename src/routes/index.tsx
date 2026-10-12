@@ -25,7 +25,11 @@ const menuList: MenuItem[] = [
         icon: "boxicons:form",
         children: [
             { id: "form1", label: "Form1", icon: "ant-design:ordered-list-outlined" , path: paths.form},
-            { id: "input", label: "Input", icon: "ant-design:shopping-outlined" , path: paths.input},
+            { id: "input", label: "Input", icon: "at-icons:text" , path: paths.input},
+            { id: "editor", label: "TiptapEditor", icon: "formkit:textarea" , path: paths.tiptapEditor},
+            { id: "editor1", label: "JoditEditor", icon: "formkit:textarea" , path: paths.joditEditor},
+
+
         ]
     },
     {id: "charts", icon: "famicons:stats-chart", label: "Charts", path: paths.charts},

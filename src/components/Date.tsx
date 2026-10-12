@@ -41,8 +41,10 @@ export function Q_Date(props: DatePickerProps) {
                     placeholder={props.placeholder ?? "Select a date"}
                     class={baseClass}
                 />
-                <DatePicker.Trigger class="px-3 py-2 text-center justify-center bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors">
+                <DatePicker.Trigger>
+                    <div class="w-full h-full justify-center text-center">
                     <Icon icon="fontisto:date" width="28" height="28"/>
+                    </div>
                 </DatePicker.Trigger>
             </div>
 

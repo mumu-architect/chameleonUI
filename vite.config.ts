@@ -3,6 +3,7 @@ import { defineConfig } from 'vitest/config';
 import solid from '@solidjs/vite-plugin';
 import tailwindcss from "@tailwindcss/vite";
 
+
 // @ts-ignore
 // @ts-ignore
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
     solid({ start: true, extensions: ['.jsx', '.tsx'], diagnostics: true }), // add `ssr: true` for streaming SSR
     fileRoutes({ types: true }),
     tailwindcss(),
+
   ],
 
   server: {

@@ -8,6 +8,7 @@ import * as FileInput from "@solidiom/file-input"
 import * as NumberInput from "@solidiom/number-input"
 import * as TimeInput from "@solidiom/time-input"
 import * as Textarea from "@solidiom/textarea";
+import Q_JoditEditor from "../components/Editor";
 
 // A layout route: pairing users.tsx with the users/ directory nests every
 // page inside it under this component.
@@ -134,6 +135,10 @@ export default function formLayout(props: ParentProps) {
 //
 // // 使用
 //     setTime(dateToTimeStr(new Date()));
+
+    const [html, setHtml] = createSignal("<p>Hello Jodit + SolidJS2</p>");
+
+
     return (
         <main  class="flex-1  p-6  border  rounded-xl">
             <h1>Form</h1>
@@ -592,6 +597,41 @@ export default function formLayout(props: ParentProps) {
 
                 </Textarea.Root>
             </div>
+
+            <h1 class="font-medium text-red-800 border-b">JoditSolid </h1>
+            <div class="flex flex-direction gap-12">
+
+                <Q_JoditEditor
+                    value={html()}
+                    onChange={setHtml}
+                    placeholder="请输入内容..."
+                    class="w-full min-h-[420px] border border-gray-300 bg-blue-600"
+                    config={{
+                        height: 420,
+                        toolbarSticky: true,
+                        // 完整按钮清单（开源版全部内置按钮）
+                        buttons: [
+                            "source", "|",
+                            "bold", "italic", "underline", "strikethrough", "eraser", "|",
+                            "superscript", "subscript", "|",
+                            "font", "fontsize", "brush", "paragraph", "|",
+                            "ul", "ol", "indent", "outdent", "|",
+                            "left", "center", "right", "justify", "|",
+                            "link", "unlink", "image", "file", "video", "|",
+                            "table", "hr", "symbols", "lineHeight", "|",
+                            "undo", "redo", "|",
+                            "copy", "cut", "paste", "copyformat", "selectall", "|",
+                            "find", "preview", "print", "fullsize", "about"
+                        ],
+                        // 图片上传（按需）
+                        uploader: {
+                            insertImageAsBase64URI: false,
+                        },
+                    }}
+                />
+            </div>
+
+
         </main>
     );
 }
