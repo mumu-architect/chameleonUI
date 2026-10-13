@@ -57,6 +57,12 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/checkbox";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/checkbox")>;
+      $$route?: undefined;
+    },
+    {
       path: "/dashboard";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/dashboard")>;
@@ -81,6 +87,12 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/fileUpload";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/fileUpload")>;
+      $$route?: undefined;
+    },
+    {
       path: "/form";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/form")>;
@@ -93,9 +105,27 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/input";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
+      $$route?: undefined;
+    },
+    {
       path: "/joditEditor";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/joditEditor")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/layout";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/layout")>;
       $$route?: undefined;
     },
     {
@@ -111,15 +141,45 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/numberInput";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/numberInput")>;
+      $$route?: undefined;
+    },
+    {
       path: "/pagination";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/pagination")>;
       $$route?: undefined;
     },
     {
+      path: "/radio";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/radio")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/select";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/select")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/switch";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/switch")>;
+      $$route?: undefined;
+    },
+    {
       path: "/table";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/table")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/textarea";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/textarea")>;
       $$route?: undefined;
     },
     {
@@ -163,66 +223,6 @@ declare module "virtual:file-routes" {
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/users/[id]")>;
       $$route: FileRouteEagerRef<typeof import("./src/routes/users/[id]")>;
-    },
-    {
-      path: "/radio";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/radio")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/checkbox";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/checkbox")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/select";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/select")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/layout";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/layout")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/input";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/switch";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/switch")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/fileUpload";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/fileUpload")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/numberInput";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/numberInput")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/textarea";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/textarea")>;
-      $$route?: undefined;
-    },
-    {
-      path: "/";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
-      $$route?: undefined;
     }
   ];
   export default routes;
@@ -286,10 +286,26 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
+      path: "/input";
+      id: "/input";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/login";
       id: "/login";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/login")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/radio";
+      id: "/radio";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/radio")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -319,22 +335,6 @@ declare module "virtual:file-routes" {
       ];
     },
     {
-      path: "/radio";
-      id: "/radio";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/radio")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
-      path: "/input";
-      id: "/input";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
       path: "/button";
       id: "/button";
       page: true;
@@ -359,18 +359,18 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/select";
-      id: "/select";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/select")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
       path: "/layout";
       id: "/layout";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/layout")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/select";
+      id: "/select";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/select")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -431,18 +431,18 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/pagination";
-      id: "/pagination";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/pagination")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
       path: "/fileUpload";
       id: "/fileUpload";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/fileUpload")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/pagination";
+      id: "/pagination";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/pagination")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -455,18 +455,18 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
-      path: "/toggleGroup";
-      id: "/toggleGroup";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
       path: "/numberInput";
       id: "/numberInput";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/numberInput")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/toggleGroup";
+      id: "/toggleGroup";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
       $$route?: undefined;
       children?: undefined;
     },

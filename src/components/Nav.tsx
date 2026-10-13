@@ -1,6 +1,7 @@
 import {createSignal, For} from 'solid-js'
 import { Icon } from "@iconify-icon/solid";
 import {PathEnd} from "@solidjs/router";
+import {Q_Tooltip} from "./Tooltip";
 
 // 菜单类型定义
 export type MenuItem = {
@@ -46,14 +47,15 @@ export function Q_MenuItem(props: QMenuItemProps) {
                 }}
                 class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700 cursor-pointer"
             >
-                <Icon icon={props.item.icon} width="24" height="24" />
+                {/*<Q_Tooltip trigger={<Icon icon={props.item.icon} width="24" height="24" />}*/}
+                {/*           content={props.item.label} />*/}
+                <Icon icon={props.item.icon} width="24" height="24"/>
                 <span class={props.sidebarCollapsed ? "hidden" : ""}>{props.item.label}</span>
                 {hasChild() && !props.sidebarCollapsed && (
                     <Icon
                         icon={isExpand() ? "ant-design:caret-down-outlined" : "ant-design:caret-right-outlined"}
                         width="16"
-                        height="16"
-                    />
+                        height="16"/>
                 )}
             </a>
 

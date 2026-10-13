@@ -1,14 +1,5 @@
 import {JSX} from "@solidjs/web";
 
-
-type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-const breakpoints: Array<{ key: Breakpoint; prefix: string }> = [
-    { key: "xs", prefix: "" },
-    { key: "sm", prefix: "sm:" },
-    { key: "md", prefix: "md:" },
-    { key: "lg", prefix: "lg:" },
-    { key: "xl", prefix: "xl:" },
-];
 interface RowProps {
     gutter?: [number, number];
     rowGap?: number;
@@ -49,7 +40,6 @@ export function Q_Row(props: RowProps) {
 
 interface ColProps {
     span?: number;
-    responsive?: Partial<Record<Breakpoint, number>>;
     gutter?: [number, number];
     offset?: number;
     class?: string;
@@ -57,30 +47,15 @@ interface ColProps {
 }
 
 export function Q_Col(props: ColProps) {
-    const { span = 24, responsive = {}, gutter, offset, class: className } = props;
+    const { span = 24, gutter, offset, class: className } = props;
     const [gx, gy] = gutter ?? [0, 0];
-    const basePct = (responsive.xs ?? span) / 24 * 100;
-    const classList: string[] = [];
-
-    for (const bp of breakpoints) {
-        const val = responsive[bp.key];
-        const targetSpan = bp.key === "xs" ? (val ?? span) : val;
-        if (targetSpan != null) {
-            const pct = (targetSpan / 24) * 100;
-            // 生成动态tailwind方括号类，不在style里写！
-            classList.push(`${bp.prefix}[flex-basis:${pct}%]`);
-            classList.push(`${bp.prefix}[max-width:${pct}%]`);
-            // 使用 w-[xxx%]，放弃flex-basis
-            classList.push(`${bp.prefix}w-[${pct}%]`);
-            classList.push(`${bp.prefix}flex-shrink-0`);
-        }
-    }
+    const pct = span / 24 * 100;
 
     const style: JSX.CSSProperties = {
         "flex-shrink": 0,
         "flex-grow": 0,
-        "flex-basis": `${basePct}%`,
-         "max-width": `${basePct}%`,
+        "flex-basis": `${pct}%`,
+        "max-width": `${pct}%`,
     };
 
     if (offset) {
@@ -97,7 +72,7 @@ export function Q_Col(props: ColProps) {
 
     return (
         <div
-            class={`${classList.join(" ")} ${className ?? ""}`}
+            class={className ?? ""}
             style={style}
         >
             {props.children}

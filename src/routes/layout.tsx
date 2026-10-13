@@ -1,6 +1,7 @@
 
 import type { ParentProps } from 'solid-js';
 import {Q_Col, Q_Row} from "../components/Layout";
+import {Q_ResCol, Q_ResRow} from "../components/ResLayout";
 
 // A layout route: pairing users.tsx with the users/ directory nests every
 // page inside it under this component.
@@ -153,44 +154,58 @@ export default function layoutLayout(props: ParentProps) {
 
                 {/* ========== 响应式布局 ========== */}
                 <section>
-                    <h2 class="text-lg font-medium mb-2">响应式布局 有bug</h2>
+                    <h2 class="text-lg font-medium mb-2">响应式布局 </h2>
                     <p class="text-sm text-gray-500 mb-4">参照了 Bootstrap 的响应式设计，预设了五个响应尺寸：xs、sm、md、lg 和 xl。</p>
                     <div class="border rounded p-4">
-                        <Q_Row gutter={[16,16]}>
-                            <Q_Col
-                                span={24}
-                                responsive={{ sm:12, md:6, lg:6, xl:6 }}
-                            >
-                                <div class="h-16 rounded bg-slate-200">1</div>
-                            </Q_Col>
-                            <Q_Col
-                                span={24}
-                                responsive={{ sm:12, md:6, lg:6, xl:6 }}
-                            >
-                                <div class="h-16 rounded bg-slate-100">2</div>
-                            </Q_Col>
-                            <Q_Col
-                                span={24}
-                                responsive={{ sm:12, md:6, lg:6, xl:6 }}
+                        <Q_ResRow gutter={[10,0]}>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:4}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">1</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:4}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">2</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:4}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">3</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:4}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">4</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:4}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">5</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:4}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">6</div>
+                            </Q_ResCol>
+                        </Q_ResRow>
+                    </div>
+                    <div class="border rounded p-4">
+                        <Q_ResRow gutter={[10,0]}>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">1</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">2</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">3</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">4</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">5</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">6</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">5</div>
+                            </Q_ResCol>
+                            <Q_ResCol responsive={{xs:24, md:8, lg:3}} gutter={[10,0]}>
+                                <div class="h-8 rounded bg-slate-200">6</div>
+                            </Q_ResCol>
+                        </Q_ResRow>
 
-                            >
-                                <div class="h-16 rounded bg-slate-200">3</div>
-                            </Q_Col>
-                            <Q_Col
-                                span={24}
-                                responsive={{ sm:12, md:6, lg:6, xl:6 }}
-                            >
-                                <div class="h-16 rounded bg-slate-100">4</div>
-                            </Q_Col>
-                        </Q_Row>
-                        <Q_Row gutter={[16,16]}>
-                            <Q_Col span={12} responsive={{sm:12}} gutter={[16,16]}>
-                                <div class="h-10 bg-slate-200 rounded">测试</div>
-                            </Q_Col>
-                            <Q_Col span={12} responsive={{sm:12}} gutter={[16,16]}>
-                                <div class="h-10 bg-slate-200 rounded">测试</div>
-                            </Q_Col>
-                        </Q_Row>
                     </div>
                 </section>
             </div>
