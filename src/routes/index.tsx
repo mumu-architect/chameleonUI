@@ -4,7 +4,8 @@ import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
 import {MenuItem, Q_MenuItem, TabItem} from "../components/Nav";
-import fileUploadLayout from "./fileUpload";
+import {Q_Menu} from "../components/Menu";
+import {useNavigate} from "@solidjs/router";
 
 
 
@@ -78,6 +79,8 @@ const menuList: MenuItem[] = [
 
 
 export default  function indexLayout(props: ParentProps) {
+    const navigate=useNavigate();
+
     // 侧边栏折叠状态
      const [sidebarCollapsed, setSidebarCollapsed] = createSignal(false);
     // 模拟打开的标签页
@@ -221,14 +224,32 @@ export default  function indexLayout(props: ParentProps) {
                                 <div class="w-8 h-8 rounded-full bg-slate-600 flex items-center justify-center text-green-400">
                                     <Icon icon="fa-solid:user-astronaut" width="25" height="25"/>
                                 </div>
-                                <span class="hidden md:inline">Admin</span>
+                                <span class="hidden md:inline">
+                                    <Q_Menu
+                                        trigger="Admin"
+                                        items={[{name:"Project address",value:2}, {name:"About us",value:1},{name:"Logout",value:0}]}
+                                        onSelect={(val) => {
+                                            console.log("选中：", val);
+                                            switch (val) {
+                                                case 0:
+                                                    navigate(paths.login);
+                                                    break;
+                                                case 1:
+                                                    location.href="https://github.com/mumu-architect/chameleonUI";
+                                                    break;
+                                                case 2:
+                                                    location.href="https://github.com/mumu-architect/chameleonUI";
+                                                    break;
+                                            }
+                                    }}/>
+                                </span>
                             </button>
                             {/* 下拉菜单 */}
-                            <div
-                                class="absolute right-0 top-full mt-1 w-36 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto z-50">
-                                <div class="p-2 hover:bg-gray-100 cursor-pointer">登录</div>
-                                <div class="p-2 hover:bg-gray-100 cursor-pointer">退出登录</div>
-                            </div>
+                            {/*<div class="absolute right-0 top-full mt-1 w-36 bg-white text-gray-800 rounded shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto z-50">*/}
+                            {/*    <div class="p-2 hover:bg-gray-100 cursor-pointer">登录</div>*/}
+                            {/*    <div class="p-2 hover:bg-gray-100 cursor-pointer">退出登录</div>*/}
+                            {/*</div>*/}
+
                         </div>
                     </header>
                     <nav class="p-2 shrink-0 bg-slate-100 flex items-center px-2 gap-1 overflow-x-auto border-b ">

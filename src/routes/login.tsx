@@ -25,7 +25,7 @@ export default function loginPage() {
                 <div class="w-full max-w-md bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl p-10">
                     <div class="text-center mb-8">
                         {/* 头像图标 */}
-                        <div class="w-14 h-14 mx-auto bg-gray-200 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-14 h-14 mx-auto text-emerald-700 bg-gray-200 rounded-full flex items-center justify-center mb-4">
                             <Icon icon="game-icons:nurse-male"  width="40" height="40"/>
                         </div>
                         <h2 class="text-2xl font-bold text-slate-800">Chameleon‑UI</h2>
