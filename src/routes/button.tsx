@@ -108,12 +108,12 @@ export default function buttonLayout(props: ParentProps) {
             <h1 class="font-medium text-red-800 border-b">Circle ICon Q_Button components </h1>
 
             <div>
-                <Q_Button variant="primary" type="circle" onClick={() => alert("clicked")}><Icon icon="ci:list-add" width="28" height="28"/></Q_Button>
-                <Q_Button variant="secondary"  type="circle" onClick={() => alert("clicked")}><Icon icon="akar-icons:edit"  width="28" height="28"/></Q_Button>
-                <Q_Button variant="danger"  type="circle" onClick={() => alert("clicked")}><Icon icon="ant-design:delete-outlined"  width="28" height="28"/></Q_Button>
-                <Q_Button variant="yellow"  type="circle" onClick={() => alert("clicked")}><Icon icon="ant-design:warning-outlined"  width="28" height="28"/></Q_Button>
-                <Q_Button variant="ghost"  type="circle" onClick={() => alert("clicked")}><Icon icon="carbon:data-view"  width="28" height="28"/></Q_Button>
-                <Q_Button variant="primary"  type="circle"  loading> <Icon icon="eos-icons:bubble-loading"  width="28" height="28"/></Q_Button>
+                <Q_Button variant="primary" shape="circle" onClick={() => alert("clicked")}><Icon icon="ci:list-add" width="28" height="28"/></Q_Button>
+                <Q_Button variant="secondary"  shape="circle" onClick={() => alert("clicked")}><Icon icon="akar-icons:edit"  width="28" height="28"/></Q_Button>
+                <Q_Button variant="danger"  shape="circle" onClick={() => alert("clicked")}><Icon icon="ant-design:delete-outlined"  width="28" height="28"/></Q_Button>
+                <Q_Button variant="yellow"  shape="circle" onClick={() => alert("clicked")}><Icon icon="ant-design:warning-outlined"  width="28" height="28"/></Q_Button>
+                <Q_Button variant="ghost"  shape="circle" onClick={() => alert("clicked")}><Icon icon="carbon:data-view"  width="28" height="28"/></Q_Button>
+                <Q_Button variant="primary"  shape="circle"  loading> <Icon icon="eos-icons:bubble-loading"  width="28" height="28"/></Q_Button>
             </div>
 
         </main>

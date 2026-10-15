@@ -7,7 +7,8 @@ type UiButtonProps = {
     onClick?: () => void;
     loading?: boolean;
     disabled?: boolean;
-    type?: "standard"|"circle";
+    shape?: "standard"|"circle";
+    type?:"submit" | "reset" | "button" | "menu" ;
     variant?: "primary" | "secondary" | "danger" | "yellow" | "ghost";
 };
 
@@ -15,7 +16,7 @@ export function Q_Button(props: UiButtonProps) {
     const base = "px-3 py-1.5 rounded transition-colors disabled:opacity-60 border justify-center text-center inline-flex items-center gap-2 m-1.5 ";
     const circleBase ="inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors disabled:opacity‑60 border  focus:ring‑2 focus:ring‑blue‑300 focus:outline-none  m-1.5 ";
     const getType=()=>{
-        switch (props.type){
+        switch (props.shape){
             case "standard":
                 return base
             case "circle":
@@ -41,7 +42,9 @@ export function Q_Button(props: UiButtonProps) {
         }
     };
     return (
+        // submit" | "reset" | "button" | "menu" |
         <Button.Root
+            type={props.type?props.type:"button"}
             onClick={props.onClick}
             loading={props.loading}
             disabled={props.disabled}

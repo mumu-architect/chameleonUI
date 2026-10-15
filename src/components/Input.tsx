@@ -6,6 +6,7 @@ import * as Input from "@solidiom/input";
 type InputColor = "blue" | "green" | "yellow" | "gray" | "red";
 type UiInputProps = ComponentProps<typeof Input.Root> & {
     color?: InputColor;
+    onChangeValue?: (val: string) => void;
 };
 
 const colorClassMap: Record<InputColor, string> = {
@@ -29,7 +30,13 @@ export function Q_Input(props: UiInputProps) {
     const finalClass = className ? `${baseClass} ${className}` : baseClass;
 
     return (
+
         <Input.Root
+            onInput={(e) => {
+                // 组件内部做类型断言
+                const v = (e.target as HTMLInputElement).value;
+                props.onChangeValue?.(v);
+            }}
             {...rest}
             class={finalClass}
         />
