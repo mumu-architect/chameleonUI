@@ -8,6 +8,7 @@ import {Q_Button} from "../components/Button";
 import {Q_Col, Q_Row} from "../components/Layout";
 import {Q_RadioGroup} from "../components/Radio";
 import {Q_CheckboxGroup} from "../components/Checkbox";
+import {JSX} from "@solidjs/web";
 
 export default function dialogLayout(props: ParentProps) {
     const [open, setOpen] = createSignal(false);
@@ -28,6 +29,12 @@ export default function dialogLayout(props: ParentProps) {
     const genderOptions = [
         { value: "1", label: "Male " },
         { value: "2", label: "Female" },
+        { value: "3", label: "Male " },
+        { value: "4", label: "Female" },
+        { value: "5", label: "Male " },
+        { value: "6", label: "Female" },
+        { value: "7", label: "Male " },
+        { value: "8", label: "Female" },
     ];
     const [hobby, setHobby] = createSignal<string[]>([]);
     const hobbyOptions = [
@@ -39,8 +46,9 @@ export default function dialogLayout(props: ParentProps) {
         { value: "6", label: "Female" },
         { value: "7", label: "Female" },
     ];
-    const handleSubmit=()=>{
-        console.log("Account deleted");
+    const handleSubmit=(e:SubmitEvent)=>{
+        e.preventDefault();
+        console.log("submit");
         const formData = {
             userName: userName(),
             password: password(),
@@ -50,7 +58,6 @@ export default function dialogLayout(props: ParentProps) {
         console.log(formData);
         //提交数据到服务器端
         setOpen(false);
-        return false
     }
     return (
         <main  class="flex-1  p-6  border  rounded-xl">
@@ -125,17 +132,26 @@ export default function dialogLayout(props: ParentProps) {
                     <Q_Dialog
                         open={openDialog}
                         setOpen={setOpenDialog}
-                        title="Delete your account?"
+                        title="Add User"
                         description="This action cannot be undone. All your data will be permanently removed."
-                        class={"w-[720px] max-w-[92vw] max-h-[85vh]"}
+                        class={"w-[720px] max-w-[92vw] h-auto "}
                     >
-                        <form onSubmit={handleSubmit}>
+                        <form
+                            onSubmit={(e: SubmitEvent) => {handleSubmit(e)
+                            }}
+                            onClick={(e: MouseEvent) => {
+                                const target = e.target as HTMLElement;
+                                if (target.closest('[data-part="root"][data-scope="checkbox"]')) {
+                                    e.preventDefault();
+                                }
+                            }}
+                        >
                             <Q_Row class="mb-3">
                                 <Q_Col span={6}>
                                     <label for={"userName"}>UserName:</label>
                                 </Q_Col>
                                 <Q_Col span={18} >
-                                    <Q_Input id={"userName"}  name={"userName"} type={"text"} value={userName()} onChangeValue={(val) => setUserName(val)} required={true} placeholder={"userName"}></Q_Input>
+                                    <Q_Input id={"userName"}  name={"userName"} type={"text"} required min-length="8" max-length="16" value={userName()} onChangeValue={(val) => setUserName(val)}  placeholder={"userName"}></Q_Input>
                                 </Q_Col>
                             </Q_Row>
                             <Q_Row class="mb-3">
@@ -143,7 +159,24 @@ export default function dialogLayout(props: ParentProps) {
                                     <label for={"password"}>Password:</label>
                                 </Q_Col>
                                 <Q_Col span={18} >
-                                    <Q_Input id={"password"} name={"password"} type={"password"} value={password()} onChangeValue={(val) => setPassword(val)} required={true} placeholder={"password"}></Q_Input>
+                                    <Q_Input id={"password"} name={"password"} type={"password"} required={true} value={password()} onChangeValue={(val) => setPassword(val)}  placeholder={"password"}></Q_Input>
+                                </Q_Col>
+                            </Q_Row>
+                            <Q_Row class="mb-3">
+                                <Q_Col span={6}>
+                                    <label for={"hobby"}>Hobby:</label>
+                                </Q_Col>
+                                <Q_Col span={18} >
+                                    <Q_CheckboxGroup
+                                        value={hobby()}
+                                        onValueChange={(v:string[]) => {
+                                            console.log("onValueChange", v);
+                                            setHobby(v);
+                                            return false;
+                                        }}
+                                        options={hobbyOptions}
+                                        color="blue"
+                                    />
                                 </Q_Col>
                             </Q_Row>
                             <Q_Row class="mb-3">
@@ -156,28 +189,14 @@ export default function dialogLayout(props: ParentProps) {
                                         onValueChange={(v: any) => {
                                             console.log("onValueChange", v);
                                             setGender(v);
+                                            return false;
                                         }}
                                         options={genderOptions}
                                         color="blue"
                                     />
                                 </Q_Col>
                             </Q_Row>
-                            <Q_Row class="mb-3">
-                                <Q_Col span={6}>
-                                    <label for={"hobby"}>Hobby:</label>
-                                </Q_Col>
-                                <Q_Col span={18} >
-                                    <Q_CheckboxGroup
-                                        value={hobby()}
-                                        onValueChange={(v) => {
-                                            console.log("onValueChange", v);
-                                            setHobby(v);
-                                        }}
-                                        options={hobbyOptions}
-                                        color="blue"
-                                    />
-                                </Q_Col>
-                            </Q_Row>
+
                             <div class="flex justify-end gap-3 mt-6">
                             <Q_Button type={"button"} variant="danger"  onClick={() => setOpenDialog(false)}>Cancel</Q_Button>
                             <Q_Button type={"submit"} variant="danger" >Submit</Q_Button>

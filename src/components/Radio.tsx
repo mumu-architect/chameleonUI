@@ -29,7 +29,7 @@ export function Q_RadioGroup(props: RadioGroupProps) {
             // 传 getter accessor，处理 undefined 默认空字符串
             value={() => props.value ?? ""}
             onValueChange={props.onValueChange}
-            class="flex flex-row flex-newline gap-4 py-2"
+            class="flex flex-wrap flex-newline gap-4 py-2"
         >
             <For each={props.options}>
                 {(item) => (

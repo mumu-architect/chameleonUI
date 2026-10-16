@@ -28,31 +28,55 @@ export function Q_CheckboxGroup(props: CheckboxGroupProps) {
         <Checkbox.Group
             value={() => props.value ?? []}
             onValueChange={props.onValueChange}
-            class="flex flex-row flex-newline gap-4  py-2 "
+            class="flex flex-wrap flex-newline gap-4  py-2 "
         >
+            {/*<For each={props.options}>*/}
+            {/*    {(item) => (*/}
+            {/*        <Checkbox.Root*/}
+            {/*            value={item.value}*/}
+            {/*            class="flex items-center gap-2 cursor-pointer select-none shrink-0"*/}
+            {/*        >*/}
+            {/*<span*/}
+            {/*    class={*/}
+            {/*        props.value.includes(item.value)*/}
+            {/*            ? `${baseColor}  w-4 h-4 rounded border  cursor-pointer flex items-center justify-center shrink-0`*/}
+            {/*            : "w-4 h-4 rounded border border-gray-400 bg-white flex items-center justify-center shrink-0"*/}
+            {/*    }*/}
+            {/*>*/}
+            {/*  <span*/}
+            {/*      class={*/}
+            {/*          props.value.includes(item.value)*/}
+            {/*              ? "text-white text-xs leading-none"*/}
+            {/*              : "hidden"*/}
+            {/*      }*/}
+            {/*  >*/}
+            {/*    ✓*/}
+            {/*  </span>*/}
+            {/*</span>*/}
+            {/*            <span class="text-sm text-gray-800 whitespace-nowrap">*/}
+            {/*  {item.label}*/}
+            {/*</span>*/}
+            {/*        </Checkbox.Root>*/}
+            {/*    )}*/}
+            {/*</For>*/}
+
             <For each={props.options}>
                 {(item) => (
                     <Checkbox.Root
                         value={item.value}
                         class="flex items-center gap-2 cursor-pointer select-none shrink-0"
                     >
-            <span
-                class={
-                    props.value.includes(item.value)
-                        ? `${baseColor}  w-4 h-4 rounded border  cursor-pointer flex items-center justify-center shrink-0`
-                        : "w-4 h-4 rounded border border-gray-400 bg-white flex items-center justify-center shrink-0"
-                }
-            >
+
               <span
                   class={
-                      props.value.includes(item.value)
-                          ? "text-white text-xs leading-none"
-                          : "hidden"
+                      (props.value ?? []).includes(item.value)
+                          ? `${baseColor} w-4 h-4 rounded border flex items-center justify-center shrink-0`
+                          : "w-4 h-4 rounded border border-gray-400 bg-white flex items-center justify-center shrink-0"
                   }
               >
-                ✓
+                <Checkbox.Indicator class="text-white text-xs leading-none">✓</Checkbox.Indicator>
               </span>
-            </span>
+
                         <span class="text-sm text-gray-800 whitespace-nowrap">
               {item.label}
             </span>

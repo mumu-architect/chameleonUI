@@ -4,7 +4,8 @@ import {JSX} from "@solidjs/web";
 
 type UiButtonProps = {
     children: JSX.Element;
-    onClick?: () => void;
+    // onClick?: () => void;
+    onClick?: JSX.EventHandler<HTMLButtonElement, MouseEvent>;
     loading?: boolean;
     disabled?: boolean;
     shape?: "standard"|"circle";
