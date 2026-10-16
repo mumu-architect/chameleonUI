@@ -24,6 +24,12 @@ const menuList: MenuItem[] = [
         path: paths.layout
     },
     {
+        id: "toast ",
+        label: "Toast ",
+        icon: "grommet-icons:toast",
+        path: paths.toast
+    },
+    {
         id: "form",
         label: "Form",
         icon: "boxicons:form",
@@ -37,10 +43,8 @@ const menuList: MenuItem[] = [
             { id: "fileUpload", label: "FileUpload", icon: "griddy-icons:file-upload" , path: paths.fileUpload},
             { id: "numberInput", label: "NumberInput", icon: "fluent-mdl2:number-field" , path: paths.numberInput},
             { id: "textarea", label: "Textarea", icon: "bi:textarea-t" , path: paths.textarea},
-
             { id: "editor", label: "TiptapEditor", icon: "formkit:textarea" , path: paths.tiptapEditor},
             { id: "editor1", label: "JoditEditor", icon: "formkit:textarea" , path: paths.joditEditor},
-
         ]
     },
     {id: "charts", icon: "famicons:stats-chart", label: "Charts", path: paths.charts},

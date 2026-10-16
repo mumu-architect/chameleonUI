@@ -81,6 +81,12 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
+      path: "/dialog";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/dialog")>;
+      $$route?: undefined;
+    },
+    {
       path: "/fileUpload";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/fileUpload")>;
@@ -219,9 +225,9 @@ declare module "virtual:file-routes" {
       $$route: FileRouteEagerRef<typeof import("./src/routes/users/[id]")>;
     },
     {
-      path: "/dialog";
+      path: "/toast";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/dialog")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toast")>;
       $$route?: undefined;
     }
   ];
@@ -335,6 +341,14 @@ declare module "virtual:file-routes" {
       ];
     },
     {
+      path: "/toast";
+      id: "/toast";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toast")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/button";
       id: "/button";
       page: true;
@@ -347,6 +361,14 @@ declare module "virtual:file-routes" {
       id: "/charts";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/charts")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
+      path: "/dialog";
+      id: "/dialog";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/dialog")>;
       $$route?: undefined;
       children?: undefined;
     },
@@ -371,14 +393,6 @@ declare module "virtual:file-routes" {
       id: "/switch";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/switch")>;
-      $$route?: undefined;
-      children?: undefined;
-    },
-    {
-      path: "/dialog";
-      id: "/dialog";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/dialog")>;
       $$route?: undefined;
       children?: undefined;
     },

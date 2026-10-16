@@ -68,6 +68,9 @@ importers:
       '@solidiom/time-input':
         specifier: ^0.5.0
         version: 0.5.0(@solidjs/web@2.0.0-rc.9(solid-js@2.0.0-rc.9))(solid-js@2.0.0-rc.9)
+      '@solidiom/toast':
+        specifier: ^0.6.0
+        version: 0.6.0(@solidjs/web@2.0.0-rc.9(solid-js@2.0.0-rc.9))(solid-js@2.0.0-rc.9)
       '@solidiom/toggle-group':
         specifier: ^0.5.0
         version: 0.5.0(@solidjs/web@2.0.0-rc.9(solid-js@2.0.0-rc.9))(solid-js@2.0.0-rc.9)
@@ -888,6 +891,12 @@ packages:
     peerDependencies:
       '@solidjs/web': '>=2.0.0-rc.8 <3.0.0'
       solid-js: '>=2.0.0-rc.8 <3.0.0'
+
+  '@solidiom/toast@0.6.0':
+    resolution: {integrity: sha512-fst/X5fzlT8el/ACUc2k0cyuS3W+cWiDNpIKs0tTp/A/ZxgUmQFDiX7eMF9ngSr8QSvT3pphmKZPM8vVwvDIzQ==}
+    peerDependencies:
+      '@solidjs/web': '>=2.0.0-rc.11 <3.0.0'
+      solid-js: '>=2.0.0-rc.11 <3.0.0'
 
   '@solidiom/toggle-group@0.5.0':
     resolution: {integrity: sha512-740e9zLNW0H54vs4yz/p9s2vV+8AFjwDa/usJ26vhi59lCzad9G2ous6GfNsebvo5ZRvFzs/u0WDZ5wIZmpNDA==}
@@ -3060,6 +3069,12 @@ snapshots:
   '@solidiom/time-input@0.5.0(@solidjs/web@2.0.0-rc.9(solid-js@2.0.0-rc.9))(solid-js@2.0.0-rc.9)':
     dependencies:
       '@solidiom/runtime': 0.5.0(solid-js@2.0.0-rc.9)
+      '@solidjs/web': 2.0.0-rc.9(solid-js@2.0.0-rc.9)
+      solid-js: 2.0.0-rc.9
+
+  '@solidiom/toast@0.6.0(@solidjs/web@2.0.0-rc.9(solid-js@2.0.0-rc.9))(solid-js@2.0.0-rc.9)':
+    dependencies:
+      '@solidiom/runtime': 0.6.0(solid-js@2.0.0-rc.9)
       '@solidjs/web': 2.0.0-rc.9(solid-js@2.0.0-rc.9)
       solid-js: 2.0.0-rc.9
 
