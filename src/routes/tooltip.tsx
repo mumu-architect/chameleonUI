@@ -26,16 +26,23 @@ export default function tooltipLayout(props: ParentProps) {
                 {/*// 固定宽度 w-32，箭头5px，间距6px*/}
                 <Q_Tooltip
                     trigger={<button class="px-2 py-1 border rounded">B</button>}
-                    content="加粗 Ctrl+B"
+                    content="加粗 Ctrl+B1"
                     width="w-32"
                     arrowSize={5}
                     gap={6}
                 />
-
+                {/*// 向上（默认）*/}
+                <Q_Tooltip trigger={<button class="px-2 py-1 border rounded">top</button>} content="上方提示" location="top" />
+                {/*// 向下*/}
+                <Q_Tooltip trigger={<button class="px-2 py-1 border rounded">bottom</button>} content="下方提示" location="bottom" />
+                {/*// 向左*/}
+                <Q_Tooltip trigger={<button class="px-2 py-1 border rounded">left</button>} content="左侧提示" location="left" />
+                {/*// 向右*/}
+                <Q_Tooltip trigger={<button class="px-2 py-1 border rounded">right</button>} content="右侧提示" location="right" />
                 {/*// 默认宽度w-fit，默认箭头4px，间距8px*/}
                 <Q_Tooltip
                     trigger={<button class="px-2 py-1 border rounded">B</button>}
-                    content="加粗 Ctrl+B"
+                    content="加粗 Ctrl+B2"
                 />
             </div>
         </main>

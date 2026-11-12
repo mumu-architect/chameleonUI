@@ -3,7 +3,7 @@ import {createSignal, Loading, For } from 'solid-js';
 import type { ParentProps } from 'solid-js';
 import { paths } from '../router';
 import {Icon } from "@iconify-icon/solid";
-import {MenuItem, Q_MenuItem, TabItem} from "../components/Nav";
+import {MenuItem ,Q_NavItem, TabItem} from "../components/Nav";
 import {Q_Menu} from "../components/Menu";
 import {useNavigate} from "@solidjs/router";
 
@@ -171,7 +171,7 @@ export default  function indexLayout(props: ParentProps) {
                     <nav class="flex-1 px-2 py-3 space-y-1 overflow-y-auto">
                         <For each={menuList}>
                             {(item) =>
-                                <Q_MenuItem item={item} sidebarCollapsed={sidebarCollapsed()} addTabPage={addTabPage} toggleMenu={toggleMenu} expandedMenus={expandedMenus()}/>
+                                <Q_NavItem item={item} sidebarCollapsed={sidebarCollapsed()} addTabPage={addTabPage} toggleMenu={toggleMenu} expandedMenus={expandedMenus()}/>
                             }
                         </For>
                     </nav>

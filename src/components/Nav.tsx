@@ -28,7 +28,7 @@ type QMenuItemProps = {
 }
 
 // 递归菜单渲染组件
-export function Q_MenuItem(props: QMenuItemProps) {
+export function Q_NavItem(props: QMenuItemProps) {
 
     const hasChild = () => props.item.children?.length
     const isExpand = () => props.expandedMenus[props.item.id]
@@ -48,7 +48,7 @@ export function Q_MenuItem(props: QMenuItemProps) {
                 class="flex items-center gap-2 px-3 py-2 rounded-md transition-colors hover:bg-slate-700 data-[active]:bg-slate-700 cursor-pointer"
             >
                 {/*<Q_Tooltip trigger={<Icon icon={props.item.icon} width="24" height="24" />}*/}
-                {/*           content={props.item.label} />*/}
+                {/*           content={props.item.label} location={"top"} />*/}
                 <Icon icon={props.item.icon} width="24" height="24"/>
                 <span class={props.sidebarCollapsed ? "hidden" : ""}>{props.item.label}</span>
                 {hasChild() && !props.sidebarCollapsed && (
@@ -62,7 +62,7 @@ export function Q_MenuItem(props: QMenuItemProps) {
             {hasChild() && isExpand() && !props.sidebarCollapsed && (
                 <div class="pl-4 mt-1 space-y-1 border-l border-slate-600">
                     <For each={props.item.children}>
-                        {(subItem) => <Q_MenuItem
+                        {(subItem) => <Q_NavItem
                             item={subItem}
                             sidebarCollapsed={props.sidebarCollapsed}
                             addTabPage={props.addTabPage}

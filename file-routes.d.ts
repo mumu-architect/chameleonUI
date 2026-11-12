@@ -105,12 +105,6 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
-      path: "/";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
-      $$route?: undefined;
-    },
-    {
       path: "/input";
       page: true;
       $component: FileRouteLazyRef<typeof import("./src/routes/input")>;
@@ -189,15 +183,15 @@ declare module "virtual:file-routes" {
       $$route?: undefined;
     },
     {
-      path: "/toggleGroup";
+      path: "/toast";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toast")>;
       $$route?: undefined;
     },
     {
-      path: "/tooltip";
+      path: "/toggleGroup";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/tooltip")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toggleGroup")>;
       $$route?: undefined;
     },
     {
@@ -225,9 +219,15 @@ declare module "virtual:file-routes" {
       $$route: FileRouteEagerRef<typeof import("./src/routes/users/[id]")>;
     },
     {
-      path: "/toast";
+      path: "/tooltip";
       page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/toast")>;
+      $component: FileRouteLazyRef<typeof import("./src/routes/tooltip")>;
+      $$route?: undefined;
+    },
+    {
+      path: "/";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/index")>;
       $$route?: undefined;
     }
   ];
@@ -324,6 +324,14 @@ declare module "virtual:file-routes" {
       children?: undefined;
     },
     {
+      path: "/toast";
+      id: "/toast";
+      page: true;
+      $component: FileRouteLazyRef<typeof import("./src/routes/toast")>;
+      $$route?: undefined;
+      children?: undefined;
+    },
+    {
       path: "/users";
       id: "/users";
       page: true;
@@ -339,14 +347,6 @@ declare module "virtual:file-routes" {
           children?: undefined;
         }
       ];
-    },
-    {
-      path: "/toast";
-      id: "/toast";
-      page: true;
-      $component: FileRouteLazyRef<typeof import("./src/routes/toast")>;
-      $$route?: undefined;
-      children?: undefined;
     },
     {
       path: "/button";
